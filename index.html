@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="عمر أحمد — مطور ذكاء اصطناعي. حلول ذكية، شات بوتات، أتمتة، وتطوير ويب">
+    <title>CodeError — Omar Ahmed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<nav>
+    <div class="logo" dir="ltr" style="display: flex; justify-content: flex-end; align-items: center;">
+        Code<span>Error</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">عنا</a></li>
+        <li><a href="#portfolio">الأعمال</a></li>
+        <li><a href="#pricing">الأسعار</a></li>
+        <li><a href="#reviews">آراء العملاء</a></li>
+        <li><a href="#custom-payment">الدفع المباشر</a></li>
+        <li><a href="#contact">تواصل</a></li>
+    </ul>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+        <h1>Code<em>Error</em></h1>
+        <p class="hero-sub">AI developer &amp; Web Developer &amp; Automation &amp; Designer</p>
+        <div class="hero-btns">
+            <a href="#portfolio" class="btn-primary"><i class="fas fa-eye"></i> أعمالنا</a>
+            <a href="#contact"   class="btn-outline"><i class="fas fa-comment-dots"></i> تواصل معنا</a>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div class="section-label"><i class="fas fa-user-astronaut"></i> من نحن</div>
+            <p class="section-sub" style="margin: 0 auto 1.5rem; font-size: 1.3rem; font-weight: 500; line-height: 1.8;">
+                نحن شركة متخصصة في الذكاء الاصطناعي، أتمتة مهامك المتكررة لتوفير وقتك ومجهودك، تطوير الويب وتصميمات السوشيال ميديا.
+                <br><br>
+                نُسرّع الأداء بالـ AI، لكننا لا نترك الإبداع للآلات...
+                <br>
+                <span style="color: var(--accent); font-weight: bold;">تصميماتنا تُصنع بعناية بشرية لتعكس هوية حقيقية لا يمكن تكرارها.</span>
+            </p>
+            <div class="tech-tags" style="justify-content: center;">
+                <div class="tech-tag"><i class="fab fa-python" style="color:#3b82f6"></i> Python</div>
+                <div class="tech-tag"><i class="fab fa-js"     style="color:#f59e0b"></i> JavaScript</div>
+                <div class="tech-tag"><i class="fas fa-robot"  style="color:#7c3aed"></i> AI / LLMs</div>
+                <div class="tech-tag"><i class="fas fa-eye"    style="color:#06b6d4"></i> Computer Vision</div>
+                <div class="tech-tag"><i class="fas fa-cogs"   style="color:#f97316"></i> Automation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" style="background:#f8fafc">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label"><i class="fas fa-briefcase"></i> الأعمال</div>
+            <h2 class="section-title">أختر القسم</h2>
+        </div>
+        <div class="cats-nav">
+            <button class="cat-btn active" onclick="switchCat('ai',this)"><i class="fas fa-robot"></i> الذكاء الاصطناعي</button>
+            <button class="cat-btn" onclick="switchCat('design',this)"><i class="fas fa-palette"></i> التصميم</button>
+            <button class="cat-btn" onclick="switchCat('websites',this)"><i class="fas fa-globe"></i> المواقع</button>
+            <button class="cat-btn" onclick="switchCat('automation',this)"><i class="fas fa-cogs"></i> الأتمتة</button>
+            <button class="cat-btn" onclick="switchCat('videos',this)"><i class="fas fa-video"></i> فيديوهات AI</button>
+        </div>
+        <div class="cat-panel active" id="panel-ai">
+            <div class="portfolio-grid" id="grid-ai">
+                <div class="empty-state" id="empty-ai" style="display:none"><i class="fas fa-robot"></i><p>أضف مشاريع AI من لوحة التحكم</p></div>
+            </div>
+        </div>
+        <div class="cat-panel" id="panel-design">
+            <div class="portfolio-grid" id="grid-design">
+                <div class="empty-state" id="empty-design"><i class="fas fa-palette"></i><p>لا يوجد محتوى بعد</p></div>
+            </div>
+        </div>
+        <div class="cat-panel" id="panel-websites">
+            <div class="portfolio-grid" id="grid-websites">
+                <div class="empty-state" id="empty-websites"><i class="fas fa-globe"></i><p>لا يوجد محتوى بعد</p></div>
+            </div>
+        </div>
+        <div class="cat-panel" id="panel-automation">
+            <div class="portfolio-grid" id="grid-automation">
+                <div class="empty-state" id="empty-automation" style="display:none"><i class="fas fa-cogs"></i><p>أضف مشاريع أتمتة من لوحة التحكم</p></div>
+            </div>
+        </div>
+        <div class="cat-panel" id="panel-videos">
+            <div class="portfolio-grid" id="grid-videos">
+                <div class="empty-state" id="empty-videos"><i class="fas fa-film"></i><p>لا يوجد فيديوهات بعد</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="pricing-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label"><i class="fas fa-tag"></i> الأسعار</div>
+            <h2 class="section-title">باقات الخدمة</h2>
+            <p class="section-sub">اختار الباقة المناسبة لمشروعك وابدأ معنا اليوم</p>
+        </div>
+        <div class="payment-grid" id="public-pricing-grid"></div>
+    </div>
+</section>
+
+<section id="reviews" style="background:#f8fafc; padding: 4rem 0; border-top: 1px solid #e2e8f0;">
+    <div class="container">
+        <div class="section-header" style="text-align: center;">
+            <div class="section-label"><i class="fas fa-star" style="color: #fbbf24;"></i> آراء العملاء</div>
+            <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+            <p class="section-sub" style="margin: 0 auto;">رأيك يهمنا ويساعدنا على تقديم الأفضل دائمًا</p>
+        </div>
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <button class="btn-primary" onclick="openReviewModal()"><i class="fas fa-pen"></i> أضف تقييمك</button>
+        </div>
+        <div class="reviews-grid" id="public-reviews-grid" style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));"></div>
+    </div>
+</section>
+
+<section id="custom-payment" class="pricing-section" style="background:#fff; border-top: 1px solid #e2e8f0;">
+    <div class="container">
+        <div class="section-header" style="text-align: center;">
+            <div class="section-label"><i class="fas fa-credit-card"></i> دفع مباشر</div>
+            <h2 class="section-title">دفع مبلغ مخصص</h2>
+            <p class="section-sub" style="margin: 0 auto;">إذا تم الاتفاق على مبلغ معين لمشروعك، يمكنك الدفع مباشرة من هنا</p>
+        </div>
+        <div class="contact-form" style="max-width:500px; margin:0 auto;">
+            <div class="form-group">
+                <label>اسمك</label>
+                <input type="text" id="custom-pay-name" placeholder="مثال: محمد أحمد...">
+            </div>
+            <div class="form-group">
+                <label>تفاصيل الدفع (اسم المشروع أو الخدمة)</label>
+                <input type="text" id="custom-pay-desc" placeholder="مثال: دفعة مقدمة لتطوير الشات بوت...">
+            </div>
+            <div class="form-group">
+                <label>المبلغ المتفق عليه (جنيه مصري)</label>
+                <input type="number" id="custom-pay-amount" placeholder="مثال: 1500">
+            </div>
+            <button class="submit-btn" onclick="openCustomPayment()">
+                <i class="fas fa-bolt"></i> متابعة الدفع
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label"><i class="fas fa-envelope"></i> تواصل</div>
+            <h2 class="section-title">تواصل معي</h2>
+            <p class="section-sub">هل عندك مشروع أو فكرة؟ تواصل معي وهنبدأ نشتغل</p>
+        </div>
+        <div class="contact-grid">
+            <div class="social-cards">
+                <a href="https://wa.me/qr/MKM27UZRYFGFG1" target="_blank" class="social-card">
+                    <i class="fab fa-whatsapp" style="color:#25d366"></i>
+                    <div class="sc-info"><h4>واتساب</h4><p>تواصل مباشر وسريع</p></div>
+                </a>
+                <a href="https://github.com/CodeError2" target="_blank" class="social-card">
+                    <i class="fab fa-github" style="color:#1e293b"></i>
+                    <div class="sc-info"><h4>GitHub</h4><p>شوف الكود والمشاريع</p></div>
+                </a>
+                <a href="https://www.linkedin.com/in/omar-ahmed-59a772371" target="_blank" class="social-card">
+                    <i class="fab fa-linkedin" style="color:#0a66c2"></i>
+                    <div class="sc-info"><h4>LinkedIn</h4><p>تواصل احترافي</p></div>
+                </a>
+            </div>
+            <div class="contact-form">
+                <h3><i class="fas fa-paper-plane" style="color:var(--accent)"></i> ابعت رسالة</h3>
+                <div class="form-group">
+                    <label>اسمك</label>
+                    <input type="text" id="msgName" placeholder="محمد أحمد">
+                </div>
+                <div class="form-group">
+                    <label>رسالتك</label>
+                    <textarea id="msgText" placeholder="عندي مشروع عايز أناقشه..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="sendWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> ابعت عبر واتساب
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>صُنع بـ ❤️ بواسطة <strong>Omar Ahmed</strong> — CodeError &copy; 2025</p>
+    </div>
+</footer>
+
+<!-- Admin Login Overlay -->
+<div id="adminOverlay">
+    <div class="admin-box">
+        <h2><i class="fas fa-shield-halved"></i> لوحة التحكم</h2>
+        <p>أدخل الـ PIN للدخول</p>
+        <div class="pin-inputs">
+            <input type="password" maxlength="1" class="pin-digit" onkeyup="pinNav(this,0,event)">
+            <input type="password" maxlength="1" class="pin-digit" onkeyup="pinNav(this,1,event)">
+            <input type="password" maxlength="1" class="pin-digit" onkeyup="pinNav(this,2,event)">
+            <input type="password" maxlength="1" class="pin-digit" onkeyup="pinNav(this,3,event)">
+        </div>
+        <div id="admin-login-error" style="color:#ef4444; font-size:0.85rem; min-height:1.2rem; text-align:center; margin-top:6px;"></div>
+        <div class="pin-actions">
+            <button class="pin-btn confirm" onclick="checkPin()"><i class="fas fa-unlock"></i> دخول</button>
+            <button class="pin-btn cancel"  onclick="closeAdminLogin()">إلغاء</button>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Dashboard -->
+<div id="adminDash">
+    <div class="admin-header">
+        <h1><i class="fas fa-shield-halved" style="color:var(--accent)"></i> لوحة <span>التحكم</span></h1>
+        <div style="display:flex; gap:10px;">
+            <button class="close-dash" onclick="closeAdminDash()" style="background:#f8fafc; color:#1e293b; border-color:#e2e8f0;"><i class="fas fa-eye-slash"></i> إخفاء</button>
+            <button class="close-dash" onclick="logoutAdmin()"><i class="fas fa-lock"></i> تسجيل الخروج</button>
+        </div>
+    </div>
+    <div class="admin-body">
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('ai',this)"><i class="fas fa-robot"></i> AI</button>
+            <button class="admin-tab" onclick="switchAdminTab('design',this)"><i class="fas fa-palette"></i> التصميم</button>
+            <button class="admin-tab" onclick="switchAdminTab('websites',this)"><i class="fas fa-globe"></i> المواقع</button>
+            <button class="admin-tab" onclick="switchAdminTab('automation',this)"><i class="fas fa-cogs"></i> الأتمتة</button>
+            <button class="admin-tab" onclick="switchAdminTab('videos',this)"><i class="fas fa-film"></i> فيديوهات</button>
+            <button class="admin-tab" onclick="switchAdminTab('pricing',this)"><i class="fas fa-tag"></i> الباقات</button>
+            <button class="admin-tab" onclick="switchAdminTab('reviews',this)"><i class="fas fa-star"></i> التقييمات</button>
+            <button class="admin-tab" onclick="switchAdminTab('receipts',this)"><i class="fas fa-file-invoice-dollar"></i> الإيصالات</button>
+        </div>
+
+        <!-- Receipts Panel -->
+        <div id="adm-panel-receipts" class="admin-panel">
+            <div style="margin-bottom: 1.5rem;">
+                <h3>🧾 الإيصالات المستلمة</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">كل إيصالات الدفع المرفوعة بواسطة العملاء هتظهر هنا</p>
+            </div>
+            <div class="items-grid" id="admin-receipts-list" style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"></div>
+        </div>
+
+        <!-- Reviews Panel -->
+        <div id="adm-panel-reviews" class="admin-panel">
+            <div style="margin-bottom: 1.5rem;">
+                <h3><i class="fas fa-star" style="color:var(--accent)"></i> إدارة التقييمات</h3>
+                <p style="color: var(--muted); font-size: 0.9rem;">يمكنك مراجعة جميع آراء العملاء ومسح التقييمات غير المناسبة</p>
+            </div>
+            <div class="items-grid" id="admin-reviews-list" style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"></div>
+        </div>
+
+        <!-- AI Panel -->
+        <div id="adm-panel-ai" class="admin-panel active">
+            <div class="add-form">
+                <h3 id="add-form-title-ai">➕ إضافة مشروع AI</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>اسم المشروع</label><input type="text" id="ai-title" placeholder="نظام AI..."></div>
+                    <div class="form-group"><label>الوسوم (مفصولة بفاصلة)</label><input type="text" id="ai-tags" placeholder="Python, GPT"></div>
+                </div>
+                <div class="form-group"><label>الوصف</label><textarea id="ai-desc" placeholder="وصف المشروع..."></textarea></div>
+                <div class="form-group"><label>رابط (اختياري)</label><input type="text" id="ai-link" placeholder="https://..."></div>
+                <div class="form-group">
+                    <label>صورة</label>
+                    <div class="upload-zone" onclick="triggerUpload('ai')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event,'ai')">
+                        <input type="file" id="file-ai" accept="image/*" onchange="previewFile(this,'ai')">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>اضغط أو اسحب صورة هنا</p>
+                        <img id="prev-img-ai" class="preview-img">
+                        <video id="prev-vid-ai" class="preview-vid" controls></video>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addItem('ai')"><i class="fas fa-plus"></i> حفظ</button>
+                </div>
+            </div>
+            <div class="items-grid" id="admin-items-ai"></div>
+        </div>
+
+        <!-- Design Panel -->
+        <div id="adm-panel-design" class="admin-panel">
+            <div class="add-form">
+                <h3 id="add-form-title-design">➕ إضافة تصميم</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>عنوان العمل</label><input type="text" id="design-title" placeholder="شعار لشركة X"></div>
+                    <div class="form-group"><label>الوسوم</label><input type="text" id="design-tags" placeholder="Logo, Branding"></div>
+                </div>
+                <div class="form-group"><label>الوصف</label><textarea id="design-desc" placeholder="وصف العمل..."></textarea></div>
+                <div class="form-group"><label>رابط</label><input type="text" id="design-link" placeholder="https://..."></div>
+                <div class="form-group">
+                    <label>صورة العمل</label>
+                    <div class="upload-zone" onclick="triggerUpload('design')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event,'design')">
+                        <input type="file" id="file-design" accept="image/*" onchange="previewFile(this,'design')">
+                        <i class="fas fa-image"></i><p>اضغط أو اسحب صورة هنا</p>
+                        <img id="prev-img-design" class="preview-img">
+                        <video id="prev-vid-design" class="preview-vid" controls></video>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addItem('design')"><i class="fas fa-plus"></i> حفظ</button>
+                </div>
+            </div>
+            <div class="items-grid" id="admin-items-design"></div>
+        </div>
+
+        <!-- Websites Panel -->
+        <div id="adm-panel-websites" class="admin-panel">
+            <div class="add-form">
+                <h3 id="add-form-title-websites">➕ إضافة موقع</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>اسم الموقع</label><input type="text" id="websites-title" placeholder="موقع متجر إلكتروني"></div>
+                    <div class="form-group"><label>رابط الموقع</label><input type="text" id="websites-link" placeholder="https://..."></div>
+                </div>
+                <div class="form-group"><label>الوسوم</label><input type="text" id="websites-tags" placeholder="HTML, CSS, React"></div>
+                <div class="form-group"><label>الوصف</label><textarea id="websites-desc" placeholder="وصف الموقع..."></textarea></div>
+                <div class="form-group">
+                    <label>صورة</label>
+                    <div class="upload-zone" onclick="triggerUpload('websites')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event,'websites')">
+                        <input type="file" id="file-websites" accept="image/*" onchange="previewFile(this,'websites')">
+                        <i class="fas fa-globe"></i><p>اضغط أو اسحب صورة هنا</p>
+                        <img id="prev-img-websites" class="preview-img">
+                        <video id="prev-vid-websites" class="preview-vid" controls></video>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addItem('websites')"><i class="fas fa-plus"></i> حفظ</button>
+                </div>
+            </div>
+            <div class="items-grid" id="admin-items-websites"></div>
+        </div>
+
+        <!-- Automation Panel -->
+        <div id="adm-panel-automation" class="admin-panel">
+            <div class="add-form">
+                <h3 id="add-form-title-automation">➕ إضافة مشروع أتمتة</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>اسم المشروع</label><input type="text" id="automation-title" placeholder="أتمتة خدمة عملاء"></div>
+                    <div class="form-group"><label>الوسوم</label><input type="text" id="automation-tags" placeholder="Python, API"></div>
+                </div>
+                <div class="form-group"><label>الوصف</label><textarea id="automation-desc" placeholder="وصف المشروع..."></textarea></div>
+                <div class="form-group"><label>رابط</label><input type="text" id="automation-link" placeholder="https://..."></div>
+                <div class="form-group">
+                    <label>صورة (اختياري)</label>
+                    <div class="upload-zone" onclick="triggerUpload('automation')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event,'automation')">
+                        <input type="file" id="file-automation" accept="image/*" onchange="previewFile(this,'automation')">
+                        <i class="fas fa-cogs"></i><p>اضغط أو اسحب صورة هنا</p>
+                        <img id="prev-img-automation" class="preview-img">
+                        <video id="prev-vid-automation" class="preview-vid" controls></video>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addItem('automation')"><i class="fas fa-plus"></i> حفظ</button>
+                </div>
+            </div>
+            <div class="items-grid" id="admin-items-automation"></div>
+        </div>
+
+        <!-- Videos Panel -->
+        <div id="adm-panel-videos" class="admin-panel">
+            <div class="add-form">
+                <h3 id="add-form-title-videos">➕ إضافة فيديو AI</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>عنوان الفيديو</label><input type="text" id="videos-title" placeholder="شرح نظام AI..."></div>
+                    <div class="form-group"><label>رابط يوتيوب أو فيسبوك</label><input type="text" id="videos-link" placeholder="https://..."></div>
+                </div>
+                <div class="form-group"><label>الوصف</label><textarea id="videos-desc" placeholder="وصف الفيديو..."></textarea></div>
+                <div class="form-group"><label>الوسوم</label><input type="text" id="videos-tags" placeholder="AI, Tutorial"></div>
+                <div class="form-group">
+                    <label>صورة غلاف</label>
+                    <div class="upload-zone" onclick="triggerUpload('videos')" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event,'videos')">
+                        <input type="file" id="file-videos" accept="image/*" onchange="previewFile(this,'videos')">
+                        <i class="fas fa-film"></i><p>اضغط أو اسحب ملف هنا</p>
+                        <img id="prev-img-videos" class="preview-img">
+                        <video id="prev-vid-videos" class="preview-vid" controls></video>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addItem('videos')"><i class="fas fa-plus"></i> حفظ</button>
+                </div>
+            </div>
+            <div class="items-grid" id="admin-items-videos"></div>
+        </div>
+
+        <!-- Pricing Panel -->
+        <div id="adm-panel-pricing" class="admin-panel">
+            <div class="add-form">
+                <h3 id="pricing-form-title">➕ إضافة باقة جديدة</h3>
+                <div class="form-row">
+                    <div class="form-group"><label>اسم الباقة</label><input type="text" id="pkg-title" placeholder="باقة الشات بوت"></div>
+                    <div class="form-group"><label>السعر</label><input type="number" id="pkg-price" placeholder="999"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>العملة</label><input type="text" id="pkg-currency" placeholder="ج.م" value="ج.م"></div>
+                    <div class="form-group" style="display:flex;align-items:center;gap:8px;padding-top:1.6rem">
+                        <input type="checkbox" id="pkg-featured" style="width:18px;height:18px;accent-color:var(--accent)">
+                        <label for="pkg-featured" style="margin:0;cursor:pointer">⭐ باقة مميزة</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>المميزات (سطر لكل ميزة)</label>
+                    <textarea id="pkg-features" placeholder="شات بوت متقدم&#10;تدريب غير محدود&#10;دعم شهر كامل" style="min-height:110px"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-add" onclick="addPricingItem()"><i class="fas fa-plus"></i> حفظ الباقة</button>
+                </div>
+            </div>
+            <div class="pricing-admin-list" id="admin-pricing-list"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    #adminDash.show { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    .admin-body { display: flex; flex-direction: column; flex-grow: 1; overflow: hidden; width: 100% !important; max-width: 1400px !important; margin: 0 auto !important; padding: 1rem 2% !important; }
+    .admin-tabs { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin-bottom: 1.5rem !important; }
+    .admin-panel { flex-grow: 1; overflow-y: auto; height: 100%; width: 100% !important; padding: 2rem !important; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+    .img-modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(5px); }
+    .img-modal-content { margin: auto; display: block; max-width: 90%; max-height: 90vh; position: relative; top: 50%; transform: translateY(-50%); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); cursor: zoom-in; }
+    .img-modal-content.zoomed { transform: translateY(-50%) scale(1.8); cursor: zoom-out; }
+    .img-modal-close { position: absolute; top: 20px; right: 30px; color: #f1f5f9; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 100000; }
+    .img-modal-close:hover { color: #ef4444; }
+    .star-icon { color: #cbd5e1; transition: color 0.2s; }
+    .review-card { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+    .review-stars { color: #fbbf24; margin-bottom: 10px; font-size: 1rem; }
+    .review-text { color: var(--text); font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; font-style: italic; }
+    .review-author { font-weight: bold; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    .hero { min-height: 60vh !important; padding-bottom: 2rem !important; }
+    #about { padding-top: 2rem !important; }
+    .port-card .port-thumb { height: 300px !important; }
+</style>
+
+<!-- Image Modal -->
+<div id="imageModal" class="img-modal" onclick="closeImage()">
+    <span class="img-modal-close" onclick="closeImage()">&times;</span>
+    <img class="img-modal-content" id="expandedImg" onclick="toggleZoom(event)">
+</div>
+
+<!-- Payment Modal -->
+<div id="payModal">
+    <div class="pay-modal-box" style="max-width: 500px; padding: 2rem;">
+        <i class="fas fa-bolt" style="font-size:2.2rem;color:var(--accent);display:block;margin-bottom:1rem"></i>
+        <h2 id="pay-modal-title">إتمام عملية الدفع</h2>
+        <p style="margin-bottom: 1.5rem;">المبلغ المطلوب: <strong id="pay-modal-price" style="color:var(--accent); font-size: 1.2rem;"></strong></p>
+        <div id="pay-step-1">
+            <p style="margin-bottom: 1rem; font-weight: bold; color: var(--text);">اختر طريقة الدفع المناسبة لك:</p>
+            <div class="pay-options">
+                <button class="pay-option-btn" onclick="showPaymentDetails('instapay')"><i class="fas fa-mobile-alt" style="color:#7c3aed;font-size:1.4rem"></i> انستا باي (InstaPay)</button>
+                <button class="pay-option-btn" onclick="showPaymentDetails('orange')"><i class="fas fa-wallet" style="color:#f97316;font-size:1.4rem"></i> أورانج كاش</button>
+            </div>
+        </div>
+        <div id="pay-step-2" style="display: none; text-align: right; background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <h4 id="pay-method-title" style="color: var(--accent); margin-bottom: 10px; font-size: 1.1rem;"></h4>
+            <div id="pay-method-desc" style="margin-bottom: 15px; font-size: 0.95rem; color: var(--muted); line-height: 1.6;"></div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label style="font-weight: bold; display: block; margin-bottom: 8px; color: var(--text);">إرفاق إيصال الدفع (سكرين شوت):</label>
+                <input type="file" id="receipt-file" accept="image/*" style="width: 100%; border: 1px dashed #cbd5e1; padding: 10px; background: #fff; border-radius: 8px; cursor: pointer;">
+            </div>
+            <button class="submit-btn" onclick="submitReceipt()" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تأكيد وإرسال الإيصال</button>
+            <button class="btn-outline" onclick="resetPayModal()" style="width: 100%; margin-top: 10px; padding: 10px; text-align: center; justify-content: center;">رجوع للطرق الأخرى</button>
+        </div>
+        <button class="modal-close-btn" onclick="closePayModal()" style="margin-top: 1.5rem;">إغلاق</button>
+    </div>
+</div>
+
+<!-- Review Modal -->
+<div id="reviewModal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100%; height:100%; background:rgba(15,23,42,0.8); align-items:center; justify-content:center; backdrop-filter: blur(4px);">
+    <div style="background:#fff; padding:2rem; border-radius:12px; width:90%; max-width:500px; position:relative;">
+        <span onclick="closeReviewModal()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#64748b;">&times;</span>
+        <h3 style="margin-bottom:1.5rem; color:var(--accent); text-align:center;"><i class="fas fa-star" style="color:#fbbf24"></i> أضف تقييمك</h3>
+        <div class="form-group">
+            <label>الاسم</label>
+            <input type="text" id="review-name" placeholder="اسمك الكريم...">
+        </div>
+        <div class="form-group" style="text-align:center; margin-bottom:1.5rem;">
+            <label style="display:block; margin-bottom:10px;">التقييم (اختر عدد النجوم)</label>
+            <div id="star-rating" style="display:flex; flex-direction:row-reverse; justify-content:center; gap:8px; font-size:2rem; cursor:pointer;">
+                <i class="fas fa-star star-icon" data-val="5" onclick="setRating(5)"></i>
+                <i class="fas fa-star star-icon" data-val="4" onclick="setRating(4)"></i>
+                <i class="fas fa-star star-icon" data-val="3" onclick="setRating(3)"></i>
+                <i class="fas fa-star star-icon" data-val="2" onclick="setRating(2)"></i>
+                <i class="fas fa-star star-icon" data-val="1" onclick="setRating(1)"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>رأيك وتجربتك</label>
+            <textarea id="review-text" placeholder="اكتب رأيك في الخدمة..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitReview()" style="width:100%; justify-content:center;"><i class="fas fa-paper-plane"></i> إرسال التقييم</button>
+    </div>
+</div>
+
+<!-- All Reviews Modal -->
+<div id="allReviewsModal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100%; height:100%; background:rgba(15,23,42,0.8); align-items:center; justify-content:center; backdrop-filter: blur(4px);">
+    <div style="background:#f8fafc; padding:2rem; border-radius:12px; width:90%; max-width:600px; max-height:85vh; overflow-y:auto; position:relative;">
+        <span onclick="closeAllReviewsModal()" style="position:absolute; top:15px; right:20px; font-size:1.5rem; cursor:pointer; color:#64748b;">&times;</span>
+        <h3 style="margin-bottom:1.5rem; color:var(--accent); text-align:center;"><i class="fas fa-comments"></i> جميع آراء العملاء</h3>
+        <div id="all-reviews-list" style="display: flex; flex-direction: column; gap: 15px;"></div>
+    </div>
+</div>
+
+<!-- Portfolio Modal -->
+<div id="portfolioModal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100%; height:100%; background:rgba(15,23,42,0.9); align-items:center; justify-content:center; backdrop-filter: blur(4px);">
+    <div style="background:#f8fafc; padding:2rem; border-radius:12px; width:95%; max-width:1100px; max-height:90vh; overflow-y:auto; position:relative;">
+        <span onclick="closePortfolioModal()" style="position:absolute; top:15px; right:20px; font-size:2rem; cursor:pointer; color:#64748b; z-index: 10;">&times;</span>
+        <h3 id="portfolio-modal-title" style="margin-bottom:1.5rem; color:var(--accent); text-align:center; font-size: 1.5rem;">جميع الأعمال</h3>
+        <div class="portfolio-grid" id="portfolio-modal-grid"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// 1. إعدادات Supabase
+// ============================================================
+const SUPABASE_URL = 'https://aoieutqzryexuruamhco.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_ApdreTDGIMuV7yzhd-bzUg_PjdLiR5M';
+
+let supabaseClient = null;
+try {
+    if (window.supabase) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+} catch(e) {}
+
+// ============================================================
+// 2. دوال البيانات (CRUD)
+// ============================================================
+async function fetchData(tableName) {
+    if (supabaseClient) {
+        try {
+            const { data, error } = await supabaseClient.from(tableName).select('*').order('id', { ascending: true });
+            if (!error && data) return data;
+        } catch(e) {}
+    }
+    try { return JSON.parse(localStorage.getItem(tableName)) || []; } catch(e) { return []; }
+}
+
+async function insertData(tableName, item) {
+    if (supabaseClient) {
+        try { await supabaseClient.from(tableName).insert([item]); } catch(e) {}
+    }
+    try {
+        const items = JSON.parse(localStorage.getItem(tableName)) || [];
+        items.push(item);
+        localStorage.setItem(tableName, JSON.stringify(items));
+    } catch(e) {}
+}
+
+async function updateData(tableName, id, updatedItem) {
+    if (supabaseClient) {
+        try { await supabaseClient.from(tableName).update(updatedItem).eq('id', id); } catch(e) {}
+    }
+    try {
+        const items = JSON.parse(localStorage.getItem(tableName)) || [];
+        const idx = items.findIndex(i => i.id === id);
+        if (idx > -1) items[idx] = { ...items[idx], ...updatedItem };
+        localStorage.setItem(tableName, JSON.stringify(items));
+    } catch(e) {}
+}
+
+async function deleteData(tableName, id) {
+    if (supabaseClient) {
+        try { await supabaseClient.from(tableName).delete().eq('id', id); } catch(e) {}
+    }
+    try {
+        const items = JSON.parse(localStorage.getItem(tableName)) || [];
+        localStorage.setItem(tableName, JSON.stringify(items.filter(i => i.id !== id)));
+    } catch(e) {}
+}
+
+// ============================================================
+// 3. المتغيرات العامة
+// ============================================================
+const ADMIN_EMAIL    = 'admin@codeerror.com'; // ✅ بريد الأدمن في Supabase Auth
+const PRICING_KEY    = 'pricing_packages';
+const PORTFOLIO_CATS = ['ai', 'design', 'websites', 'automation', 'videos'];
+
+let clickCount = 0, clickTimer = null;
+let editingId = null, editingPricingId = null;
+let fileData = {};
+let currentPayTitle = '', currentPayPrice = '', currentPayName = '', selectedPayMethod = '';
+let currentRating = 0;
+
+// ============================================================
+// 4. ✅ أمان — XSS Protection
+// ============================================================
+window.escapeHTML = function(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .replace(/\//g, '&#x2F;');
+};
+
+// ============================================================
+// 5. ✅ أمان — مصادقة الأدمن عبر Supabase Auth
+// ============================================================
+window.openAdminLogin = function() {
+    document.getElementById('adminOverlay').classList.add('show');
+    document.getElementById('admin-login-error').textContent = '';
+    setTimeout(() => document.querySelectorAll('.pin-digit')[0]?.focus(), 100);
+};
+
+window.closeAdminLogin = function() {
+    document.getElementById('adminOverlay').classList.remove('show');
+    document.querySelectorAll('.pin-digit').forEach(i => { i.value = ''; i.classList.remove('wrong'); });
+    document.getElementById('admin-login-error').textContent = '';
+};
+
+window.pinNav = function(el, idx, e) {
+    if (e.key === 'Backspace' && !el.value && idx > 0) {
+        document.querySelectorAll('.pin-digit')[idx - 1].focus();
+        return;
+    }
+    if (el.value && idx < 3) document.querySelectorAll('.pin-digit')[idx + 1].focus();
+    if (e.key === 'Enter') window.checkPin();
+};
+
+// ✅ checkPin — المصادقة عبر Supabase Auth وليس PIN في المتصفح
+window.checkPin = async function() {
+    const digits = document.querySelectorAll('.pin-digit');
+    const pin = Array.from(digits).map(d => d.value).join('');
+
+    if (pin.length < 4) {
+        document.getElementById('admin-login-error').textContent = '⚠️ أدخل 4 أرقام كاملة';
+        return;
+    }
+
+    const errorEl = document.getElementById('admin-login-error');
+    errorEl.textContent = '⏳ جاري التحقق...';
+
+    try {
+        // PIN يُحوَّل إلى باسورد → admin-XXXX
+        // عدّل الصيغة دي لتتطابق مع ما ضبطته في Supabase Auth
+        const password = 'admin-' + pin;
+
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+            email: ADMIN_EMAIL,
+            password: password
+        });
+
+        if (error || !data.user) {
+            digits.forEach(d => { d.classList.add('wrong'); d.value = ''; });
+            setTimeout(() => {
+                digits.forEach(d => d.classList.remove('wrong'));
+                digits[0].focus();
+            }, 600);
+            errorEl.textContent = '❌ PIN خاطئ، حاول مرة أخرى';
+        } else {
+            errorEl.textContent = '';
+            window.closeAdminLogin();
+            window.openAdminDash();
+        }
+    } catch (err) {
+        errorEl.textContent = '❌ خطأ في الاتصال بالسيرفر';
+    }
+};
+
+// ✅ تسجيل الخروج الحقيقي
+window.logoutAdmin = async function() {
+    if (supabaseClient) {
+        try { await supabaseClient.auth.signOut(); } catch(e) {}
+    }
+    window.closeAdminDash();
+    window.showToast('🔒 تم تسجيل الخروج بنجاح');
+};
+
+// ✅ فحص الجلسة عند فتح الصفحة
+async function checkExistingSession() {
+    if (!supabaseClient) return;
+    try {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (session && session.user) {
+            window.openAdminDash();
+        }
+    } catch(e) {}
+}
+
+window.openAdminDash = function() {
+    document.getElementById('adminDash').classList.add('show');
+    window.renderAllAdminPanels();
+};
+
+window.closeAdminDash = function() {
+    document.getElementById('adminDash').classList.remove('show');
+};
+
+window.switchAdminTab = function(cat, btn) {
+    document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('adm-panel-' + cat).classList.add('active');
+};
+
+// ============================================================
+// 6. التنقل في الصفحة
+// ============================================================
+window.switchCat = function(cat, btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.getElementById('panel-' + cat).classList.add('active');
+};
+
+// ============================================================
+// 7. رفع الملفات
+// ============================================================
+window.triggerUpload = function(cat) { document.getElementById('file-' + cat).click(); };
+
+window.previewFile = function(input, cat) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        fileData[cat] = e.target.result;
+        const isVid = file.type.startsWith('video/');
+        const img = document.getElementById('prev-img-' + cat);
+        const vid = document.getElementById('prev-vid-' + cat);
+        if (img) { img.style.display = isVid ? 'none' : 'block'; if (!isVid) img.src = e.target.result; }
+        if (vid) { vid.style.display = isVid ? 'block' : 'none'; if (isVid) vid.src = e.target.result; }
+    };
+    reader.readAsDataURL(file);
+};
+
+window.dragOver  = function(e) { e.preventDefault(); e.currentTarget.classList.add('drag'); };
+window.dragLeave = function(e) { e.currentTarget.classList.remove('drag'); };
+
+window.dropFile = function(e, cat) {
+    e.preventDefault(); e.currentTarget.classList.remove('drag');
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    const dt = new DataTransfer(); dt.items.add(file);
+    const input = document.getElementById('file-' + cat);
+    input.files = dt.files;
+    window.previewFile(input, cat);
+};
+
+window.clearFileData = function(cat) {
+    fileData[cat] = null;
+    const img = document.getElementById('prev-img-' + cat);
+    const vid = document.getElementById('prev-vid-' + cat);
+    if (img) { img.src = ''; img.style.display = 'none'; }
+    if (vid) { vid.src = ''; vid.style.display = 'none'; }
+    const inp = document.getElementById('file-' + cat);
+    if (inp) inp.value = '';
+};
+
+// ============================================================
+// 8. CRUD — إضافة / تعديل / حذف العناصر
+// ============================================================
+window.getFieldVal = function(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+window.setFieldVal = function(id, v) { const el = document.getElementById(id); if (el) el.value = v; };
+
+window.addItem = async function(cat) {
+    try {
+        const title = window.getFieldVal(`${cat}-title`);
+
+
+        const tableName = 'portfolio_' + cat;
+        const f = document.getElementById('file-' + cat);
+        const isVid = f && f.files[0] && f.files[0].type.startsWith('video/');
+
+        if (editingId !== null) {
+            const updatedItem = {
+                title,
+                desc: window.getFieldVal(`${cat}-desc`),
+                tags: window.getFieldVal(`${cat}-tags`),
+                link: window.getFieldVal(`${cat}-link`)
+            };
+            if (fileData[cat]) { updatedItem.media = fileData[cat]; updatedItem.isVideo = isVid; }
+            await updateData(tableName, editingId, updatedItem);
+            editingId = null;
+            document.getElementById(`add-form-title-${cat}`).textContent = '➕ إضافة';
+        } else {
+            const newItem = {
+                id: Date.now(),
+                title,
+                desc: window.getFieldVal(`${cat}-desc`),
+                tags: window.getFieldVal(`${cat}-tags`),
+                link: window.getFieldVal(`${cat}-link`),
+                media: fileData[cat] || null,
+                isVideo: isVid
+            };
+            await insertData(tableName, newItem);
+        }
+
+        ['title', 'desc', 'tags', 'link'].forEach(f => window.setFieldVal(`${cat}-${f}`, ''));
+        window.clearFileData(cat);
+        window.renderAdminItems(cat);
+        window.renderPublicPanel(cat);
+        window.showToast('✅ تم الحفظ بنجاح');
+    } catch (err) {
+        window.showToast('❌ حدث خطأ أثناء الحفظ');
+    }
+};
+
+// ✅ دالة wrapper آمنة للحذف بدل كشف اسم الجدول في HTML
+window.deleteItem = async function(cat, id) {
+    if (!confirm('هل أنت متأكد من الحذف؟')) return;
+    // التحقق من أن cat من القيم المسموحة فقط
+    if (!PORTFOLIO_CATS.includes(cat)) return;
+    await deleteData('portfolio_' + cat, Number(id));
+    window.renderAdminItems(cat);
+    window.renderPublicPanel(cat);
+    window.showToast('🗑️ تم الحذف');
+};
+
+// ✅ دالة wrapper آمنة لحذف الإيصالات
+window.deleteReceipt = async function(id) {
+    if (!confirm('حذف الإيصال نهائياً؟')) return;
+    await deleteData('payment_receipts', Number(id));
+    window.renderAdminReceipts();
+    window.showToast('🗑️ تم حذف الإيصال');
+};
+
+// ✅ دالة wrapper آمنة لحذف التقييمات
+window.deleteReview = async function(id) {
+    if (!confirm('هل أنت متأكد من مسح هذا التقييم نهائياً؟')) return;
+    await deleteData('client_reviews', Number(id));
+    window.renderAdminReviews();
+    window.renderPublicReviews();
+    window.showToast('🗑️ تم مسح التقييم بنجاح');
+};
+
+window.addPricingItem = async function() {
+    const title = window.getFieldVal('pkg-title');
+    const price = window.getFieldVal('pkg-price');
+    if (!title || !price) { window.showToast('⚠️ اكتب الاسم والسعر'); return; }
+
+    const newItem = {
+        title,
+        price,
+        currency: window.getFieldVal('pkg-currency') || 'ج.م',
+        features: window.getFieldVal('pkg-features'),
+        featured: document.getElementById('pkg-featured')?.checked || false
+    };
+
+    if (editingPricingId !== null) {
+        await updateData(PRICING_KEY, editingPricingId, newItem);
+        editingPricingId = null;
+    } else {
+        newItem.id = Date.now();
+        await insertData(PRICING_KEY, newItem);
+    }
+
+    ['pkg-title', 'pkg-price', 'pkg-currency', 'pkg-features'].forEach(id => window.setFieldVal(id, ''));
+    if (document.getElementById('pkg-featured')) document.getElementById('pkg-featured').checked = false;
+    window.renderAdminPricing();
+    window.renderPublicPricing();
+    window.showToast('✅ تم حفظ الباقة');
+};
+
+window.deletePricingItem = async function(id) {
+    if (!confirm('حذف الباقة؟')) return;
+    await deleteData(PRICING_KEY, Number(id));
+    window.renderAdminPricing();
+    window.renderPublicPricing();
+    window.showToast('🗑️ تم الحذف');
+};
+
+// ============================================================
+// 9. Lightbox — الصورة المكبرة
+// ============================================================
+window.openImage = function(src) {
+    // ✅ تأكد إن الـ src آمن ومش data url مشبوه
+    if (!src || (!src.startsWith('data:image/') && !src.startsWith('https://') && !src.startsWith('http://'))) return;
+    document.getElementById('expandedImg').src = src;
+    document.getElementById('expandedImg').classList.remove('zoomed');
+    document.getElementById('imageModal').style.display = 'block';
+};
+window.closeImage = function() { document.getElementById('imageModal').style.display = 'none'; };
+window.toggleZoom = function(e) { e.stopPropagation(); e.target.classList.toggle('zoomed'); };
+
+// ============================================================
+// 10. ✅ العرض الآمن — كل البيانات تمر عبر escapeHTML
+// ============================================================
+window.renderAllAdminPanels = function() {
+    PORTFOLIO_CATS.forEach(cat => {
+        window.renderAdminItems(cat);
+        window.renderPublicPanel(cat);
+    });
+    window.renderAdminPricing();
+    window.renderPublicPricing();
+    window.renderAdminReceipts();
+    window.renderAdminReviews();
+};
+
+// ✅ renderAdminItems — آمن من XSS
+window.renderAdminItems = async function(cat) {
+    const grid = document.getElementById(`admin-items-${cat}`);
+    if (!grid) return;
+    const items = await fetchData('portfolio_' + cat);
+    if (!items.length) {
+        grid.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:2rem">لا يوجد عناصر بعد</p>';
+        return;
+    }
+    grid.innerHTML = items.map(item => {
+        const safeTitle = window.escapeHTML(item.title);
+        const safeMedia = item.media ? window.escapeHTML(item.media) : '';
+        const safeCat   = window.escapeHTML(cat);
+        const safeId    = Number(item.id);
+        const isActualVid = (item.isVideo === true || item.isVideo === 'true');
+        return `<div class="admin-item">
+            ${safeMedia
+                ? (isActualVid
+                    ? `<video src="${safeMedia}" muted></video>`
+                    : `<img src="${safeMedia}" alt="${safeTitle}">`)
+                : `<div class="no-media"><i class="fas fa-image"></i></div>`}
+            <div class="admin-item-info"><h4>${safeTitle}</h4></div>
+            <div class="item-actions">
+                <button class="btn-del-item" onclick="deleteItem('${safeCat}',${safeId})">
+                    <i class="fas fa-trash"></i> حذف
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+};
+
+// دالة مساعدة لبناء كارت المشروع
+window.createPortfolioCard = function(item, cat) {
+    const card = document.createElement('div');
+    card.className = 'port-card dynamic-item';
+
+    const safeMedia = item.media ? window.escapeHTML(item.media) : '';
+    const safeLink  = item.link  ? window.escapeHTML(item.link)  : '';
+    const safeTitle = window.escapeHTML(item.title || '');
+    const safeDesc  = window.escapeHTML(item.desc  || '');
+
+    let thumbContent = `<span class="no-img"><i class="fas fa-image"></i></span>`;
+    let hasClickableThumb = false;
+    const isActualVid = (item.isVideo === true || item.isVideo === 'true');
+
+    if (safeMedia) {
+        if (isActualVid) {
+            thumbContent = `<div class="play-btn"><i class="fas fa-play-circle"></i></div><video src="${safeMedia}" muted></video>`;
+        } else {
+            if (safeLink && cat === 'videos') {
+                thumbContent = `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;height:100%;position:relative;"><img src="${safeMedia}" alt="${safeTitle}" style="width:100%;height:100%;object-fit:cover;"><div class="play-btn"><i class="fas fa-play-circle"></i></div></a>`;
+                hasClickableThumb = true;
+            } else {
+                thumbContent = `<img src="${safeMedia}" alt="${safeTitle}" onclick="openImage('${safeMedia}')" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;" title="اضغط للتكبير">`;
+            }
+        }
+    } else if (safeLink) {
+        const ytId = safeLink.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/)?.[1];
+        if (ytId) {
+            const ytThumb = `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`;
+            thumbContent = `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;height:100%;position:relative;"><img src="${ytThumb}" alt="${safeTitle}" style="width:100%;height:100%;object-fit:cover"><div class="play-btn"><i class="fas fa-play-circle"></i></div></a>`;
+            hasClickableThumb = true;
+        } else if (cat === 'videos') {
+            thumbContent = `<span class="no-img"><i class="fas fa-video"></i></span>`;
+        }
+    }
+
+    const tagsHtml = (item.tags || '').split(',')
+        .map(t => t.trim() ? `<span class="port-tag">${window.escapeHTML(t.trim())}</span>` : '')
+        .join('');
+
+    const linkHtml = (safeLink && !hasClickableThumb)
+        ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:.85rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:10px;"><i class="fas fa-external-link-alt"></i> عرض المشروع</a>`
+        : '';
+
+    card.innerHTML = `
+        <div class="port-thumb" style="position:relative;">${thumbContent}</div>
+        <div class="port-info">
+            <h4>${safeTitle}</h4>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.5;">${safeDesc}</p>
+            <div class="port-tags">${tagsHtml}</div>
+            ${linkHtml}
+        </div>`;
+    return card;
+};
+
+// عرض الأعمال في الصفحة (أول 6 فقط)
+window.renderPublicPanel = async function(cat) {
+    const grid = document.getElementById(`grid-${cat}`);
+    if (!grid) return;
+
+    const dynamic = await fetchData('portfolio_' + cat);
+    grid.querySelectorAll('.dynamic-item').forEach(el => el.remove());
+
+    const empty = document.getElementById(`empty-${cat}`);
+    const staticCount = grid.querySelectorAll('.port-card:not(.dynamic-item)').length;
+    if (empty) empty.style.display = (staticCount + dynamic.length === 0) ? 'block' : 'none';
+
+    const itemsToDisplay = dynamic.length > 6 ? dynamic.slice(0, 6) : dynamic;
+    itemsToDisplay.forEach(item => grid.appendChild(window.createPortfolioCard(item, cat)));
+
+    if (dynamic.length > 6) {
+        const btnDiv = document.createElement('div');
+        btnDiv.className = 'dynamic-item';
+        btnDiv.style.cssText = 'grid-column: 1 / -1; text-align: center; margin-top: 1.5rem;';
+        btnDiv.innerHTML = `<button class="btn-outline" onclick="openPortfolioModal('${window.escapeHTML(cat)}')" style="padding: 10px 25px; font-size: 1rem; border-radius: 8px;">
+            <i class="fas fa-layer-group"></i> عرض جميع الأعمال (${dynamic.length})
+        </button>`;
+        grid.appendChild(btnDiv);
+    }
+};
+
+// نافذة عرض كل الأعمال
+window.openPortfolioModal = async function(cat) {
+    if (!PORTFOLIO_CATS.includes(cat)) return;
+    document.getElementById('portfolioModal').style.display = 'flex';
+
+    const catNames = { ai: 'الذكاء الاصطناعي', design: 'التصميم', websites: 'المواقع', automation: 'الأتمتة', videos: 'فيديوهات AI' };
+    document.getElementById('portfolio-modal-title').innerHTML = `<i class="fas fa-folder-open"></i> جميع أعمال ${catNames[cat] || cat}`;
+
+    const grid = document.getElementById('portfolio-modal-grid');
+    grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color: var(--muted);">جاري التحميل...</p>';
+
+    const dynamic = await fetchData('portfolio_' + cat);
+    grid.innerHTML = '';
+    dynamic.forEach(item => grid.appendChild(window.createPortfolioCard(item, cat)));
+};
+
+window.closePortfolioModal = function() {
+    document.getElementById('portfolioModal').style.display = 'none';
+};
+
+// ✅ renderAdminPricing — آمن من XSS
+window.renderAdminPricing = async function() {
+    const list = document.getElementById('admin-pricing-list');
+    if (!list) return;
+    const items = await fetchData(PRICING_KEY);
+    list.innerHTML = items.map(item => {
+        const safeTitle = window.escapeHTML(item.title);
+        const safeId    = Number(item.id);
+        return `<div class="pricing-admin-item">
+            <div class="pai-info"><h4>${safeTitle}</h4></div>
+            <div class="pai-actions">
+                <button class="btn-sm-del" onclick="deletePricingItem(${safeId})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+};
+
+// ✅ renderPublicPricing — آمن من XSS
+window.renderPublicPricing = async function() {
+    const grid = document.getElementById('public-pricing-grid');
+    if (!grid) return;
+    const items = await fetchData(PRICING_KEY);
+    if (!items.length) {
+        grid.innerHTML = '<p style="text-align:center;color:var(--muted);padding:3rem">لا توجد باقات بعد</p>';
+        return;
+    }
+    grid.innerHTML = items.map(item => {
+        const safeTitle    = window.escapeHTML(item.title);
+        const safePrice    = window.escapeHTML(String(item.price));
+        const safeCurrency = window.escapeHTML(item.currency || 'ج.م');
+        const features     = (item.features || '').split('\n').filter(Boolean);
+        const featuresHtml = features.map(f => `<li><i class="fas fa-check-circle"></i>${window.escapeHTML(f)}</li>`).join('');
+        // ✅ نمرر البيانات عبر data attributes بدل تضمينها مباشرة في onclick
+        return `<div class="payment-card ${item.featured ? 'featured' : ''}">
+            ${item.featured ? '<div class="featured-badge">الأكثر طلباً ⭐</div>' : ''}
+            <div class="price">${safePrice} <span>${safeCurrency}</span></div>
+            <h4>${safeTitle}</h4>
+            <ul>${featuresHtml}</ul>
+            <button class="pay-btn"
+                data-title="${safeTitle}"
+                data-price="${safePrice} ${safeCurrency}"
+                onclick="handlePricingPayment(this)">
+                <i class="fas fa-bolt"></i> ابدأ الآن
+            </button>
+        </div>`;
+    }).join('');
+};
+
+// ✅ handler آمن لزرار الباقات
+window.handlePricingPayment = function(btn) {
+    const title = btn.getAttribute('data-title');
+    const price = btn.getAttribute('data-price');
+    window.openPayment(title, price);
+};
+
+// ✅ renderAdminReceipts — آمن من XSS
+window.renderAdminReceipts = async function() {
+    const list = document.getElementById('admin-receipts-list');
+    if (!list) return;
+    const receipts = await fetchData('payment_receipts');
+    if (!receipts || receipts.length === 0) {
+        list.innerHTML = '<p style="text-align:center;padding:2rem;color:#94a3b8;grid-column:1/-1;">لا توجد إيصالات مستلمة حتى الآن</p>';
+        return;
+    }
+    list.innerHTML = receipts.map(r => {
+        const safeName    = window.escapeHTML(r.client_name);
+        const safeService = window.escapeHTML(r.service_title);
+        const safeAmount  = window.escapeHTML(String(r.amount));
+        const safeMethod  = r.payment_method === 'instapay' ? 'انستا باي' : 'أورانج كاش';
+        const safeId      = Number(r.id);
+        // ✅ الصورة تظهر بس لو data:image أو HTTPS
+        const safeImg = r.receipt_image && (r.receipt_image.startsWith('data:image/') || r.receipt_image.startsWith('https://'))
+            ? window.escapeHTML(r.receipt_image) : '';
+        return `<div class="admin-item" style="flex-direction:column; align-items:flex-start; height:auto; padding:15px; background:#fff; border:1px solid #e2e8f0; border-radius:12px;">
+            ${safeImg ? `<img src="${safeImg}" onclick="openImage('${safeImg}')" alt="إيصال" style="width:100%; height:180px; object-fit:cover; border-radius:8px; cursor:pointer; margin-bottom:12px;">` : ''}
+            <div style="width:100%">
+                <h4 style="color:var(--accent); margin-bottom:8px;">👤 ${safeName}</h4>
+                <p style="font-size:0.9rem; margin-bottom:4px;"><b>📦 الخدمة:</b> ${safeService}</p>
+                <p style="font-size:0.9rem; margin-bottom:4px;"><b>💰 المبلغ:</b> ${safeAmount}</p>
+                <p style="font-size:0.9rem; margin-bottom:12px;"><b>🏧 الوسيلة:</b> ${safeMethod}</p>
+                <button class="btn-del-item" onclick="deleteReceipt(${safeId})" style="width:100%; background:#fee2e2; color:#dc2626; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+                    <i class="fas fa-trash"></i> حذف الإيصال
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+};
+
+// ✅ renderAdminReviews — آمن من XSS
+window.renderAdminReviews = async function() {
+    const list = document.getElementById('admin-reviews-list');
+    if (!list) return;
+    const reviews = await fetchData('client_reviews');
+    if (!reviews || !reviews.length) {
+        list.innerHTML = '<p style="text-align:center;padding:2rem;color:#94a3b8;grid-column:1/-1;">لا توجد تقييمات مسجلة حتى الآن</p>';
+        return;
+    }
+    reviews.sort((a, b) => b.id - a.id);
+    list.innerHTML = reviews.map(r => {
+        const safeName = window.escapeHTML(r.client_name);
+        const safeText = window.escapeHTML(r.review_text);
+        const safeDate = window.escapeHTML(r.date || '');
+        const safeId   = Number(r.id);
+        const rating   = Math.min(5, Math.max(0, Number(r.rating)));
+        return `<div class="admin-item" style="flex-direction:column; align-items:flex-start; height:auto; padding:15px; background:#fff; border:1px solid #e2e8f0; border-radius:12px;">
+            <div style="width:100%">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <h4 style="color:var(--accent); margin:0;">👤 ${safeName}</h4>
+                    <span style="color:#fbbf24; font-weight:bold;"><i class="fas fa-star"></i> ${rating}</span>
+                </div>
+                <p style="font-size:0.9rem; margin-bottom:12px; color:var(--text); font-style:italic;">"${safeText}"</p>
+                <p style="font-size:0.8rem; margin-bottom:12px; color:var(--muted);">${safeDate}</p>
+                <button class="btn-del-item" onclick="deleteReview(${safeId})" style="width:100%; background:#fee2e2; color:#dc2626; border:none; padding:8px; border-radius:6px; cursor:pointer;">
+                    <i class="fas fa-trash"></i> مسح التقييم
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+};
+
+// ============================================================
+// 11. نظام التقييمات
+// ============================================================
+window.openReviewModal = function() {
+    document.getElementById('reviewModal').style.display = 'flex';
+    window.setRating(0);
+    document.getElementById('review-name').value = '';
+    document.getElementById('review-text').value = '';
+};
+
+window.closeReviewModal = function() {
+    document.getElementById('reviewModal').style.display = 'none';
+};
+
+window.setRating = function(val) {
+    currentRating = val;
+    document.querySelectorAll('#star-rating .star-icon').forEach(star => {
+        star.style.color = parseInt(star.getAttribute('data-val')) <= val ? '#fbbf24' : '#cbd5e1';
+    });
+};
+
+window.openAllReviewsModal = async function() {
+    document.getElementById('allReviewsModal').style.display = 'flex';
+    const list = document.getElementById('all-reviews-list');
+    list.innerHTML = '<p style="text-align:center;">جاري التحميل...</p>';
+    const reviews = await fetchData('client_reviews');
+    reviews.sort((a, b) => b.id - a.id);
+    list.innerHTML = reviews.map(r => window.createReviewCardHtml(r)).join('');
+};
+
+window.closeAllReviewsModal = function() {
+    document.getElementById('allReviewsModal').style.display = 'none';
+};
+
+window.submitReview = async function() {
+    const name = document.getElementById('review-name').value.trim() || 'عميل';
+    const text = document.getElementById('review-text').value.trim();
+    if (!text || currentRating === 0) {
+        window.showToast('⚠️ يرجى كتابة الرأي واختيار النجوم');
+        return;
+    }
+    const newReview = {
+        id: Date.now(),
+        client_name: name,
+        review_text: text,
+        rating: currentRating,
+        date: new Date().toLocaleDateString('ar-EG')
+    };
+    window.showToast('⏳ جاري الحفظ...');
+    await insertData('client_reviews', newReview);
+    window.closeReviewModal();
+    window.showToast('✅ تم إرسال تقييمك بنجاح، شكراً لك!');
+    window.renderPublicReviews();
+};
+
+// ✅ createReviewCardHtml — آمن من XSS
+window.createReviewCardHtml = function(r) {
+    let starsHtml = '';
+    const rating = Math.min(5, Math.max(0, Number(r.rating)));
+    for (let i = 1; i <= 5; i++) {
+        starsHtml += `<i class="fas fa-star" style="color: ${i <= rating ? '#fbbf24' : '#e2e8f0'}"></i>`;
+    }
+    const safeName = window.escapeHTML(r.client_name);
+    const safeText = window.escapeHTML(r.review_text);
+    const safeDate = window.escapeHTML(r.date || '');
+    const initial  = safeName ? safeName.charAt(0) : '@';
+    return `<div class="review-card">
+        <div class="review-stars">${starsHtml}</div>
+        <p class="review-text">"${safeText}"</p>
+        <div class="review-author">
+            <div style="width:40px; height:40px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2rem;">
+                ${initial}
+            </div>
+            <div>
+                <div style="font-size:1rem;">${safeName}</div>
+                <div style="font-size:0.8rem; color:var(--muted); margin-top:2px;">${safeDate}</div>
+            </div>
+        </div>
+    </div>`;
+};
+
+window.renderPublicReviews = async function() {
+    const grid = document.getElementById('public-reviews-grid');
+    if (!grid) return;
+    const reviews = await fetchData('client_reviews');
+    if (!reviews || !reviews.length) {
+        grid.innerHTML = '<p style="text-align:center; color:var(--muted); grid-column:1/-1; padding:2rem;">لا توجد تقييمات بعد، كن أول من يقيمنا!</p>';
+        return;
+    }
+    reviews.sort((a, b) => b.id - a.id);
+    let html = reviews.slice(0, 5).map(r => window.createReviewCardHtml(r)).join('');
+    if (reviews.length > 5) {
+        html += `<div style="grid-column: 1 / -1; text-align: center; margin-top: 1.5rem;">
+            <button class="btn-outline" onclick="openAllReviewsModal()" style="padding: 10px 25px; font-size: 1rem; border-radius: 8px;">
+                <i class="fas fa-list"></i> عرض المزيد من الآراء (${reviews.length})
+            </button>
+        </div>`;
+    }
+    grid.innerHTML = html;
+};
+
+// ============================================================
+// 12. الدفع
+// ============================================================
+window.openPayment = function(title, price, name = '') {
+    currentPayTitle = title;
+    currentPayPrice = price;
+    currentPayName  = name;
+    document.getElementById('pay-modal-title').textContent = title;
+    document.getElementById('pay-modal-price').textContent = price;
+    window.resetPayModal();
+    document.getElementById('payModal').classList.add('show');
+};
+
+window.closePayModal  = function() { document.getElementById('payModal').classList.remove('show'); };
+window.resetPayModal  = function() {
+    document.getElementById('pay-step-1').style.display = 'block';
+    document.getElementById('pay-step-2').style.display = 'none';
+};
+
+window.showPaymentDetails = function(method) {
+    selectedPayMethod = method;
+    document.getElementById('pay-step-1').style.display = 'none';
+    document.getElementById('pay-step-2').style.display = 'block';
+    const titleEl = document.getElementById('pay-method-title');
+    const descEl  = document.getElementById('pay-method-desc');
+    if (method === 'instapay') {
+        titleEl.innerHTML = '<i class="fas fa-mobile-alt"></i> الدفع عبر انستا باي';
+        descEl.innerHTML  = `برجاء تحويل المبلغ عبر انستا باي:
+            <br><br>
+            <a href="https://ipn.eg/S/omar.a9608/instapay/4ZS8nE" target="_blank" rel="noopener noreferrer"
+               style="display:inline-block; background:var(--accent); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold; margin-bottom:10px;">
+               <i class="fas fa-paper-plane"></i> فتح تطبيق انستا باي
+            </a>
+            <br><span style="font-size:0.8rem; color:var(--muted);">رابط الدفع: omar.a9608@instapay</span>
+            <br><br>أو التحويل على الرقم: <strong>01275482101</strong>`;
+    } else {
+        titleEl.innerHTML = '<i class="fas fa-wallet"></i> الدفع عبر أورانج كاش';
+        descEl.innerHTML  = `برجاء تحويل المبلغ إلى رقم أورانج كاش التالي:
+            <br><br>
+            <div style="background:#fff; border:2px dashed #f97316; padding:15px; border-radius:10px; text-align:center;">
+                <span style="font-size:1.5rem; font-weight:bold; color:#1e293b; display:block; margin-bottom:10px;">01278995867</span>
+                <button type="button" onclick="copyNumber('01278995867')" style="background:#f97316; color:#fff; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">
+                    <i class="fas fa-copy"></i> نسخ الرقم
+                </button>
+            </div>
+            <br><p style="font-size:0.85rem; color:var(--muted);">بعد التحويل، يرجى إرفاق صورة الإيصال بالأسفل.</p>`;
+    }
+};
+
+window.openCustomPayment = function() {
+    const name   = document.getElementById('custom-pay-name')?.value.trim();
+    const desc   = document.getElementById('custom-pay-desc')?.value.trim() || 'دفع مخصص';
+    const amount = document.getElementById('custom-pay-amount')?.value.trim();
+    if (!name)   return window.showToast('⚠️ يرجى إدخال اسمك أولاً');
+    if (!amount || isNaN(amount)) return window.showToast('⚠️ يرجى إدخال مبلغ صحيح');
+    window.openPayment(desc, amount + ' ج.م', name);
+};
+
+window.submitReceipt = async function() {
+    const receiptInput = document.getElementById('receipt-file');
+    const file = receiptInput?.files[0];
+    if (!file) { window.showToast('⚠️ يرجى إرفاق صورة الإيصال أولاً'); return; }
+    // ✅ تحقق من نوع الملف
+    if (!file.type.startsWith('image/')) { window.showToast('⚠️ يرجى رفع صورة فقط'); return; }
+    // ✅ حد أقصى 5MB
+    if (file.size > 5 * 1024 * 1024) { window.showToast('⚠️ الصورة كبيرة جداً (الحد الأقصى 5MB)'); return; }
+
+    window.showToast('⏳ جاري رفع البيانات..');
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+        const imageData = e.target.result;
+        const receiptData = {
+            id: Date.now(),
+            client_name:    currentPayName || 'زائر',
+            service_title:  currentPayTitle,
+            amount:         currentPayPrice,
+            payment_method: selectedPayMethod,
+            receipt_image:  imageData
+        };
+        await insertData('payment_receipts', receiptData);
+        let message = `*تأكيد دفع (CodeError)* 💳\n\n`;
+        message += `👤 *الاسم:* ${receiptData.client_name}\n`;
+        message += `📦 *الخدمة:* ${receiptData.service_title}\n`;
+        message += `💰 *المبلغ:* ${receiptData.amount}\n`;
+        message += `🏧 *الوسيلة:* ${receiptData.payment_method === 'instapay' ? 'انستا باي' : 'أورانج كاش'}\n\n`;
+        message += `✅ تم رفع الإيصال في لوحة تحكم الموقع.`;
+        window.open(`https://wa.me/201278995867?text=${encodeURIComponent(message)}`, '_blank');
+        window.closePayModal();
+        window.showToast('✅ تم الرفع وفتح واتساب');
+    };
+    reader.readAsDataURL(file);
+};
+
+window.sendWhatsApp = function() {
+    const name = window.getFieldVal('msgName');
+    const text = window.getFieldVal('msgText');
+    if (!text) return window.showToast('⚠️ اكتب رسالتك أولاً');
+    window.open('https://wa.me/201278995867?text=' + encodeURIComponent(`مرحباً، أنا ${name || 'زائر'}.\n${text}`), '_blank');
+};
+
+window.copyNumber = function(num) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num)
+            .then(() => window.showToast('✅ تم نسخ الرقم: ' + num))
+            .catch(() => alert('الرقم هو: ' + num));
+    } else {
+        const ta = document.createElement('textarea');
+        ta.value = num;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        window.showToast('✅ تم نسخ الرقم بنجاح');
+    }
+};
+
+window.showToast = function(msg) {
+    const t = document.getElementById('toast');
+    if (t) { t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2800); }
+};
+
+// ============================================================
+// 13. الإعداد عند تحميل الصفحة
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // ✅ فحص جلسة Supabase الحالية (بدل localStorage)
+    checkExistingSession();
+
+    // كليك سري لفتح لوحة التحكم
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('click', async () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
+            if (clickCount >= 8) {
+                clickCount = 0;
+                if (!supabaseClient) { window.showToast('⚠️ Supabase غير متصل'); return; }
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (session) window.openAdminDash();
+                else window.openAdminLogin();
+            }
+        });
+    }
+
+    // القائمة المتجاوبة
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const links = document.querySelector('.nav-links');
+            if (links.style.display === 'flex') {
+                links.style.display = '';
+            } else {
+                Object.assign(links.style, { display: 'flex', flexDirection: 'column', position: 'absolute', top: '70px', left: '0', right: '0', background: '#fff', padding: '1.5rem', borderBottom: '1px solid #e2e8f0', zIndex: '99' });
+            }
+        });
+    }
+
+    // إغلاق النوافذ بالضغط خارجها
+    document.getElementById('payModal')?.addEventListener('click', e => {
+        if (e.target === document.getElementById('payModal')) window.closePayModal();
+    });
+    document.getElementById('adminOverlay')?.addEventListener('click', e => {
+        if (e.target === document.getElementById('adminOverlay')) window.closeAdminLogin();
+    });
+
+    // تحميل البيانات
+    PORTFOLIO_CATS.forEach(cat => window.renderPublicPanel(cat));
+    window.renderPublicPricing();
+    window.renderPublicReviews();
+});
+</script>
+</body>
+</html>
