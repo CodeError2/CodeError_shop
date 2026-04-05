@@ -13,7 +13,7 @@
 
 <nav>
     <div class="logo" dir="ltr" style="display: flex; justify-content: flex-end; align-items: center;">
-        Code<span>Error</span>
+        <span style="color:#1e293b;">Code</span><span style="color:#ef4444;">Error</span>
     </div>
     <ul class="nav-links">
         <li><a href="#home">الرئيسية</a></li>
@@ -30,7 +30,7 @@
 <section id="home" class="hero">
     <div class="hero-glow"></div>
     <div class="hero-inner">
-        <h1>Code<em>Error</em></h1>
+        <h1><span style="color:#1e293b;">Code</span><em style="color:#ef4444;">Error</em></h1>
         <p class="hero-sub">AI developer &amp; Web Developer &amp; Automation &amp; Designer</p>
         <div class="hero-btns">
             <a href="#portfolio" class="btn-primary"><i class="fas fa-eye"></i> أعمالنا</a>
@@ -75,9 +75,7 @@
             <button class="cat-btn" onclick="switchCat('videos',this)"><i class="fas fa-video"></i> فيديوهات AI</button>
         </div>
         <div class="cat-panel active" id="panel-ai">
-            <div class="portfolio-grid" id="grid-ai">
-                <div class="empty-state" id="empty-ai" style="display:none"><i class="fas fa-robot"></i><p>أضف مشاريع AI من لوحة التحكم</p></div>
-            </div>
+            <div class="portfolio-grid" id="grid-ai"></div>
         </div>
         <div class="cat-panel" id="panel-design">
             <div class="portfolio-grid" id="grid-design">
@@ -171,10 +169,6 @@
                     <i class="fab fa-github" style="color:#1e293b"></i>
                     <div class="sc-info"><h4>GitHub</h4><p>شوف الكود والمشاريع</p></div>
                 </a>
-                <a href="https://www.linkedin.com/in/omar-ahmed-59a772371" target="_blank" class="social-card">
-                    <i class="fab fa-linkedin" style="color:#0a66c2"></i>
-                    <div class="sc-info"><h4>LinkedIn</h4><p>تواصل احترافي</p></div>
-                </a>
             </div>
             <div class="contact-form">
                 <h3><i class="fas fa-paper-plane" style="color:var(--accent)"></i> ابعت رسالة</h3>
@@ -196,7 +190,7 @@
 
 <footer>
     <div class="container">
-        <p>صُنع بـ ❤️ بواسطة <strong>Omar Ahmed</strong> — CodeError &copy; 2025</p>
+        <p>صُنع بـ ❤️ بواسطة <strong>Omar Ahmed</strong> — <span style="color:#1e293b;font-weight:bold;">Code</span><span style="color:#ef4444;font-weight:bold;">Error</span> &copy; 2025</p>
     </div>
 </footer>
 
@@ -280,6 +274,7 @@
                 </div>
                 <div class="form-actions">
                     <button class="btn-add" onclick="addItem('ai')"><i class="fas fa-plus"></i> حفظ</button>
+                    <button class="btn-cancel-edit" id="cancel-edit-ai" onclick="cancelEdit('ai')" style="display:none;"><i class="fas fa-times"></i> إلغاء التعديل</button>
                 </div>
             </div>
             <div class="items-grid" id="admin-items-ai"></div>
@@ -306,6 +301,7 @@
                 </div>
                 <div class="form-actions">
                     <button class="btn-add" onclick="addItem('design')"><i class="fas fa-plus"></i> حفظ</button>
+                    <button class="btn-cancel-edit" id="cancel-edit-design" onclick="cancelEdit('design')" style="display:none;"><i class="fas fa-times"></i> إلغاء التعديل</button>
                 </div>
             </div>
             <div class="items-grid" id="admin-items-design"></div>
@@ -332,6 +328,7 @@
                 </div>
                 <div class="form-actions">
                     <button class="btn-add" onclick="addItem('websites')"><i class="fas fa-plus"></i> حفظ</button>
+                    <button class="btn-cancel-edit" id="cancel-edit-websites" onclick="cancelEdit('websites')" style="display:none;"><i class="fas fa-times"></i> إلغاء التعديل</button>
                 </div>
             </div>
             <div class="items-grid" id="admin-items-websites"></div>
@@ -358,6 +355,7 @@
                 </div>
                 <div class="form-actions">
                     <button class="btn-add" onclick="addItem('automation')"><i class="fas fa-plus"></i> حفظ</button>
+                    <button class="btn-cancel-edit" id="cancel-edit-automation" onclick="cancelEdit('automation')" style="display:none;"><i class="fas fa-times"></i> إلغاء التعديل</button>
                 </div>
             </div>
             <div class="items-grid" id="admin-items-automation"></div>
@@ -384,6 +382,7 @@
                 </div>
                 <div class="form-actions">
                     <button class="btn-add" onclick="addItem('videos')"><i class="fas fa-plus"></i> حفظ</button>
+                    <button class="btn-cancel-edit" id="cancel-edit-videos" onclick="cancelEdit('videos')" style="display:none;"><i class="fas fa-times"></i> إلغاء التعديل</button>
                 </div>
             </div>
             <div class="items-grid" id="admin-items-videos"></div>
@@ -395,14 +394,30 @@
                 <h3 id="pricing-form-title">➕ إضافة باقة جديدة</h3>
                 <div class="form-row">
                     <div class="form-group"><label>اسم الباقة</label><input type="text" id="pkg-title" placeholder="باقة الشات بوت"></div>
-                    <div class="form-group"><label>السعر</label><input type="number" id="pkg-price" placeholder="999"></div>
+                    <div class="form-group"><label>السعر الأساسي (للوحدة)</label><input type="number" id="pkg-price" placeholder="999"></div>
                 </div>
                 <div class="form-row">
                     <div class="form-group"><label>العملة</label><input type="text" id="pkg-currency" placeholder="ج.م" value="ج.م"></div>
-                    <div class="form-group" style="display:flex;align-items:center;gap:8px;padding-top:1.6rem">
-                        <input type="checkbox" id="pkg-featured" style="width:18px;height:18px;accent-color:var(--accent)">
-                        <label for="pkg-featured" style="margin:0;cursor:pointer">⭐ باقة مميزة</label>
+                    <div class="form-group">
+                        <label>نوع الباقة</label>
+                        <select id="pkg-type" style="width:100%; padding:10px; border:1px solid #e2e8f0; border-radius:8px;">
+                            <option value="fixed">سعر ثابت</option>
+                            <option value="per_design">سعر لكل تصميم</option>
+                            <option value="per_page">سعر لكل صفحة ويب</option>
+                            <option value="custom">كمية مخصصة</option>
+                        </select>
                     </div>
+                </div>
+                <div class="form-row" id="pkg-qty-row" style="display:none;">
+                    <div class="form-group"><label>الحد الأدنى</label><input type="number" id="pkg-min-qty" placeholder="1" value="1"></div>
+                    <div class="form-group"><label>الحد الأقصى</label><input type="number" id="pkg-max-qty" placeholder="20" value="20"></div>
+                </div>
+                <div class="form-row" id="pkg-label-row" style="display:none;">
+                    <div class="form-group"><label>تسمية الوحدة (مثلا: تصميم / صفحة)</label><input type="text" id="pkg-unit-label" placeholder="تصميم"></div>
+                </div>
+                <div class="form-group" style="display:flex;align-items:center;gap:8px;padding-top:0.5rem">
+                    <input type="checkbox" id="pkg-featured" style="width:18px;height:18px;accent-color:var(--accent)">
+                    <label for="pkg-featured" style="margin:0;cursor:pointer">⭐ باقة مميزة</label>
                 </div>
                 <div class="form-group">
                     <label>المميزات (سطر لكل ميزة)</label>
@@ -436,6 +451,56 @@
     .hero { min-height: 60vh !important; padding-bottom: 2rem !important; }
     #about { padding-top: 2rem !important; }
     .port-card .port-thumb { height: 300px !important; }
+    .btn-cancel-edit { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+    .btn-cancel-edit:hover { background: #e2e8f0; }
+    .btn-edit-item { background: #dbeafe; color: #2563eb; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 4px; }
+    .btn-edit-item:hover { background: #bfdbfe; }
+
+    /* Portfolio Modal - sticky close button */
+    .portfolio-modal-close-bar {
+        position: sticky;
+        top: 0;
+        background: #f8fafc;
+        z-index: 10;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 15px;
+        border-bottom: 1px solid #e2e8f0;
+        margin: -2rem -2rem 1rem -2rem;
+    }
+    .portfolio-modal-close-btn {
+        background: #fee2e2;
+        color: #dc2626;
+        border: none;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+    }
+    .portfolio-modal-close-btn:hover { background: #fecaca; }
+
+    /* Pricing quantity selector */
+    .qty-selector { display: flex; align-items: center; gap: 12px; justify-content: center; margin: 15px 0; }
+    .qty-btn { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--accent); background: #fff; color: var(--accent); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: all 0.2s; }
+    .qty-btn:hover { background: var(--accent); color: #fff; }
+    .qty-display { font-size: 1.4rem; font-weight: bold; color: var(--text); min-width: 40px; text-align: center; }
+    .qty-label { font-size: 0.85rem; color: var(--muted); text-align: center; margin-bottom: 5px; }
+    .calculated-price { background: linear-gradient(135deg, var(--accent), #7c3aed); color: #fff; padding: 12px 20px; border-radius: 10px; text-align: center; margin: 10px 0; font-size: 1rem; }
+    .calculated-price strong { font-size: 1.4rem; display: block; margin-top: 4px; }
+
+    /* Hardcoded AI projects */
+    .hardcoded-badge { background: #dbeafe; color: #2563eb; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; display: inline-flex; align-items: center; gap: 3px; }
+
+    /* Review edit */
+    .review-edit-actions { display: flex; gap: 8px; margin-top: 10px; }
+    .btn-edit-review { background: #dbeafe; color: #2563eb; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+    .btn-del-review { background: #fee2e2; color: #dc2626; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
 </style>
 
 <!-- Image Modal -->
@@ -507,12 +572,22 @@
     </div>
 </div>
 
-<!-- Portfolio Modal -->
+<!-- Portfolio Modal - with sticky close bar -->
 <div id="portfolioModal" style="display:none; position:fixed; z-index:99999; left:0; top:0; width:100%; height:100%; background:rgba(15,23,42,0.9); align-items:center; justify-content:center; backdrop-filter: blur(4px);">
     <div style="background:#f8fafc; padding:2rem; border-radius:12px; width:95%; max-width:1100px; max-height:90vh; overflow-y:auto; position:relative;">
-        <span onclick="closePortfolioModal()" style="position:absolute; top:15px; right:20px; font-size:2rem; cursor:pointer; color:#64748b; z-index: 10;">&times;</span>
+        <div class="portfolio-modal-close-bar">
+            <button class="portfolio-modal-close-btn" onclick="closePortfolioModal()" title="إغلاق">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
         <h3 id="portfolio-modal-title" style="margin-bottom:1.5rem; color:var(--accent); text-align:center; font-size: 1.5rem;">جميع الأعمال</h3>
         <div class="portfolio-grid" id="portfolio-modal-grid"></div>
+        <!-- Bottom close button too -->
+        <div style="text-align:center; margin-top:2rem;">
+            <button onclick="closePortfolioModal()" style="background:#fee2e2; color:#dc2626; border:none; padding:10px 30px; border-radius:8px; cursor:pointer; font-size:1rem; display:inline-flex; align-items:center; gap:8px;">
+                <i class="fas fa-times"></i> إغلاق النافذة
+            </button>
+        </div>
     </div>
 </div>
 
@@ -533,7 +608,112 @@ try {
 } catch(e) {}
 
 // ============================================================
-// 2. دوال البيانات (CRUD)
+// 2. المشاريع الثابتة للـ AI (مدمجة في الكود)
+// ============================================================
+const HARDCODED_AI_PROJECTS = [
+    {
+        id: 'hc-1',
+        title: 'كاميرا مراقبة ذكية',
+        desc: 'نظام مراقبة متطور يستخدم الذكاء الاصطناعي للتعرف على الوجوه والأشياء والحركة مع إمكانية إرسال تنبيهات فورية',
+        tags: 'Computer Vision,Python,Deep Learning',
+        link: '',
+        media: null,
+        icon: 'fas fa-camera',
+        iconColor: '#06b6d4',
+        hardcoded: true
+    },
+    {
+        id: 'hc-2',
+        title: 'شات بوت ذكي',
+        desc: 'بوت محادثة تفاعلي يستخدم اقوى موديلات الذكاء الاصطناعي وتدريبها على الداتا المطلوبه مما يجعله متخصص فمجال المطلوب بطريقه ذكيه جدا',
+        tags: 'NLP,AI,Chatbot',
+        link: '',
+        media: null,
+        icon: 'fas fa-comments',
+        iconColor: '#7c3aed',
+        hardcoded: true
+    },
+    {
+        id: 'hc-3',
+        title: 'Aura - مساعد صوتي ذكي',
+        desc: 'مساعد صوتي متقدم للكمبيوتر يمكنه فهم الأوامر الصوتية وتنفيذ المهام المختلفة والتفاعل بشكل طبيعي',
+        tags: 'Voice Recognition,AI Assistant,Speech-to-Text',
+        link: '',
+        media: null,
+        icon: 'fas fa-microphone-alt',
+        iconColor: '#f59e0b',
+        hardcoded: true
+    },
+    {
+        id: 'hc-4',
+        title: 'مشاريع تطوير الويب',
+        desc: 'أحدث تقنيات الويب مع تصاميم عصرية ومبتكرة',
+        tags: 'HTML,CSS',
+        link: '',
+        media: null,
+        icon: 'fas fa-globe',
+        iconColor: '#10b981',
+        hardcoded: true
+    },
+    {
+        id: 'hc-5',
+        title: 'الماوس الذكي التفاعلي',
+        desc: 'التحكم الكامل في الماوس (حركة، نقر، سحب وإفلات) عن طريق إيماءات اليد باستخدام كاميرا الويب وتقنيات الرؤية الحاسوبية.',
+        tags: 'Computer Vision,OpenCV,MediaPipe',
+        link: '',
+        media: null,
+        icon: 'fas fa-hand-pointer',
+        iconColor: '#3b82f6',
+        hardcoded: true
+    },
+    {
+        id: 'hc-6',
+        title: 'أتمتة خدمة العملاء',
+        desc: 'نظام أتمتة شامل للرد الفوري على العملاء عبر منصات متعددة (WhatsApp, Messenger, Telegram, Instagram) لزيادة سرعة الاستجابة.',
+        tags: 'Automation,API Integration,Python',
+        link: '',
+        media: null,
+        icon: 'fas fa-headset',
+        iconColor: '#f97316',
+        hardcoded: true
+    },
+    {
+        id: 'hc-7',
+        title: 'محاكاة فيروس الفدية',
+        desc: 'مشروع لأغراض الأمن السيبراني يحاكي عمل برمجيات الفدية (Ransomware) لفهم آليات التشفير وطرق الحماية منها.',
+        tags: 'Cybersecurity,Cryptography,Malware Analysis',
+        link: '',
+        media: null,
+        icon: 'fas fa-skull-crossbones',
+        iconColor: '#ef4444',
+        hardcoded: true
+    },
+    {
+        id: 'hc-8',
+        title: 'أداة اتصال عكسي (Reverse Shell)',
+        desc: 'أداة لاختبار الاختراق تتيح إنشاء اتصال عكسي آمن ومخفي بالأجهزة للتحكم عن بعد وتقييم الثغرات الأمنية.',
+        tags: 'Penetration Testing,Networking,Ethical Hacking',
+        link: '',
+        media: null,
+        icon: 'fas fa-terminal',
+        iconColor: '#1e293b',
+        hardcoded: true
+    },
+    {
+        id: 'hc-9',
+        title: 'مستخرج بيانات الشبكات',
+        desc: 'سكربت أمني متقدم لاستخراج وتحليل كلمات مرور شبكات الـ Wi-Fi المحفوظة على الأجهزة لاختبار أمان الشبكات المحلية.',
+        tags: 'Security,Python Scripting,System Admin',
+        link: '',
+        media: null,
+        icon: 'fas fa-wifi',
+        iconColor: '#8b5cf6',
+        hardcoded: true
+    }
+];
+
+// ============================================================
+// 3. دوال البيانات (CRUD)
 // ============================================================
 async function fetchData(tableName) {
     if (supabaseClient) {
@@ -579,20 +759,21 @@ async function deleteData(tableName, id) {
 }
 
 // ============================================================
-// 3. المتغيرات العامة
+// 4. المتغيرات العامة
 // ============================================================
-const ADMIN_EMAIL    = 'admin@codeerror.com'; // ✅ بريد الأدمن في Supabase Auth
+const ADMIN_EMAIL    = 'admin@codeerror.com';
 const PRICING_KEY    = 'pricing_packages';
 const PORTFOLIO_CATS = ['ai', 'design', 'websites', 'automation', 'videos'];
 
 let clickCount = 0, clickTimer = null;
-let editingId = null, editingPricingId = null;
+let editingId = null, editingCat = null, editingPricingId = null;
 let fileData = {};
 let currentPayTitle = '', currentPayPrice = '', currentPayName = '', selectedPayMethod = '';
 let currentRating = 0;
+let currentReviewEditId = null;
 
 // ============================================================
-// 4. ✅ أمان — XSS Protection
+// 5. XSS Protection
 // ============================================================
 window.escapeHTML = function(str) {
     if (str === null || str === undefined) return '';
@@ -606,7 +787,7 @@ window.escapeHTML = function(str) {
 };
 
 // ============================================================
-// 5. ✅ أمان — مصادقة الأدمن عبر Supabase Auth
+// 6. مصادقة الأدمن
 // ============================================================
 window.openAdminLogin = function() {
     document.getElementById('adminOverlay').classList.add('show');
@@ -629,35 +810,21 @@ window.pinNav = function(el, idx, e) {
     if (e.key === 'Enter') window.checkPin();
 };
 
-// ✅ checkPin — المصادقة عبر Supabase Auth وليس PIN في المتصفح
 window.checkPin = async function() {
     const digits = document.querySelectorAll('.pin-digit');
     const pin = Array.from(digits).map(d => d.value).join('');
-
     if (pin.length < 4) {
         document.getElementById('admin-login-error').textContent = '⚠️ أدخل 4 أرقام كاملة';
         return;
     }
-
     const errorEl = document.getElementById('admin-login-error');
     errorEl.textContent = '⏳ جاري التحقق...';
-
     try {
-        // PIN يُحوَّل إلى باسورد → admin-XXXX
-        // عدّل الصيغة دي لتتطابق مع ما ضبطته في Supabase Auth
         const password = 'admin-' + pin;
-
-        const { data, error } = await supabaseClient.auth.signInWithPassword({
-            email: ADMIN_EMAIL,
-            password: password
-        });
-
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email: ADMIN_EMAIL, password: password });
         if (error || !data.user) {
             digits.forEach(d => { d.classList.add('wrong'); d.value = ''; });
-            setTimeout(() => {
-                digits.forEach(d => d.classList.remove('wrong'));
-                digits[0].focus();
-            }, 600);
+            setTimeout(() => { digits.forEach(d => d.classList.remove('wrong')); digits[0].focus(); }, 600);
             errorEl.textContent = '❌ PIN خاطئ، حاول مرة أخرى';
         } else {
             errorEl.textContent = '';
@@ -669,23 +836,17 @@ window.checkPin = async function() {
     }
 };
 
-// ✅ تسجيل الخروج الحقيقي
 window.logoutAdmin = async function() {
-    if (supabaseClient) {
-        try { await supabaseClient.auth.signOut(); } catch(e) {}
-    }
+    if (supabaseClient) { try { await supabaseClient.auth.signOut(); } catch(e) {} }
     window.closeAdminDash();
     window.showToast('🔒 تم تسجيل الخروج بنجاح');
 };
 
-// ✅ فحص الجلسة عند فتح الصفحة
 async function checkExistingSession() {
     if (!supabaseClient) return;
     try {
         const { data: { session } } = await supabaseClient.auth.getSession();
-        if (session && session.user) {
-            window.openAdminDash();
-        }
+        if (session && session.user) window.openAdminDash();
     } catch(e) {}
 }
 
@@ -694,9 +855,7 @@ window.openAdminDash = function() {
     window.renderAllAdminPanels();
 };
 
-window.closeAdminDash = function() {
-    document.getElementById('adminDash').classList.remove('show');
-};
+window.closeAdminDash = function() { document.getElementById('adminDash').classList.remove('show'); };
 
 window.switchAdminTab = function(cat, btn) {
     document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
@@ -706,7 +865,7 @@ window.switchAdminTab = function(cat, btn) {
 };
 
 // ============================================================
-// 6. التنقل في الصفحة
+// 7. التنقل
 // ============================================================
 window.switchCat = function(cat, btn) {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -716,7 +875,7 @@ window.switchCat = function(cat, btn) {
 };
 
 // ============================================================
-// 7. رفع الملفات
+// 8. رفع الملفات
 // ============================================================
 window.triggerUpload = function(cat) { document.getElementById('file-' + cat).click(); };
 
@@ -759,20 +918,55 @@ window.clearFileData = function(cat) {
 };
 
 // ============================================================
-// 8. CRUD — إضافة / تعديل / حذف العناصر
+// 9. CRUD مع دعم التعديل
 // ============================================================
 window.getFieldVal = function(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
 window.setFieldVal = function(id, v) { const el = document.getElementById(id); if (el) el.value = v; };
 
+window.cancelEdit = function(cat) {
+    editingId = null;
+    editingCat = null;
+    ['title', 'desc', 'tags', 'link'].forEach(f => window.setFieldVal(`${cat}-${f}`, ''));
+    window.clearFileData(cat);
+    const titleEl = document.getElementById(`add-form-title-${cat}`);
+    if (titleEl) titleEl.textContent = '➕ إضافة';
+    const cancelBtn = document.getElementById(`cancel-edit-${cat}`);
+    if (cancelBtn) cancelBtn.style.display = 'none';
+};
+
+window.startEdit = function(cat, id) {
+    if (!PORTFOLIO_CATS.includes(cat)) return;
+    fetchData('portfolio_' + cat).then(items => {
+        const item = items.find(i => String(i.id) === String(id));
+        if (!item) return;
+        editingId = item.id;
+        editingCat = cat;
+        window.setFieldVal(`${cat}-title`, item.title || '');
+        window.setFieldVal(`${cat}-desc`,  item.desc  || '');
+        window.setFieldVal(`${cat}-tags`,  item.tags  || '');
+        window.setFieldVal(`${cat}-link`,  item.link  || '');
+        if (item.media) {
+            fileData[cat] = item.media;
+            const img = document.getElementById(`prev-img-${cat}`);
+            if (img && !item.isVideo) { img.src = item.media; img.style.display = 'block'; }
+        }
+        const titleEl = document.getElementById(`add-form-title-${cat}`);
+        if (titleEl) titleEl.textContent = '✏️ تعديل العنصر';
+        const cancelBtn = document.getElementById(`cancel-edit-${cat}`);
+        if (cancelBtn) cancelBtn.style.display = 'flex';
+        // Scroll to form
+        const panel = document.getElementById(`adm-panel-${cat}`);
+        if (panel) panel.scrollTop = 0;
+        window.showToast('✏️ جاهز للتعديل — عدّل البيانات واضغط حفظ');
+    });
+};
+
 window.addItem = async function(cat) {
     try {
         const title = window.getFieldVal(`${cat}-title`);
-
-
         const tableName = 'portfolio_' + cat;
         const f = document.getElementById('file-' + cat);
         const isVid = f && f.files[0] && f.files[0].type.startsWith('video/');
-
         if (editingId !== null) {
             const updatedItem = {
                 title,
@@ -783,7 +977,11 @@ window.addItem = async function(cat) {
             if (fileData[cat]) { updatedItem.media = fileData[cat]; updatedItem.isVideo = isVid; }
             await updateData(tableName, editingId, updatedItem);
             editingId = null;
-            document.getElementById(`add-form-title-${cat}`).textContent = '➕ إضافة';
+            editingCat = null;
+            const titleEl = document.getElementById(`add-form-title-${cat}`);
+            if (titleEl) titleEl.textContent = '➕ إضافة';
+            const cancelBtn = document.getElementById(`cancel-edit-${cat}`);
+            if (cancelBtn) cancelBtn.style.display = 'none';
         } else {
             const newItem = {
                 id: Date.now(),
@@ -796,7 +994,6 @@ window.addItem = async function(cat) {
             };
             await insertData(tableName, newItem);
         }
-
         ['title', 'desc', 'tags', 'link'].forEach(f => window.setFieldVal(`${cat}-${f}`, ''));
         window.clearFileData(cat);
         window.renderAdminItems(cat);
@@ -807,10 +1004,8 @@ window.addItem = async function(cat) {
     }
 };
 
-// ✅ دالة wrapper آمنة للحذف بدل كشف اسم الجدول في HTML
 window.deleteItem = async function(cat, id) {
     if (!confirm('هل أنت متأكد من الحذف؟')) return;
-    // التحقق من أن cat من القيم المسموحة فقط
     if (!PORTFOLIO_CATS.includes(cat)) return;
     await deleteData('portfolio_' + cat, Number(id));
     window.renderAdminItems(cat);
@@ -818,7 +1013,6 @@ window.deleteItem = async function(cat, id) {
     window.showToast('🗑️ تم الحذف');
 };
 
-// ✅ دالة wrapper آمنة لحذف الإيصالات
 window.deleteReceipt = async function(id) {
     if (!confirm('حذف الإيصال نهائياً؟')) return;
     await deleteData('payment_receipts', Number(id));
@@ -826,7 +1020,6 @@ window.deleteReceipt = async function(id) {
     window.showToast('🗑️ تم حذف الإيصال');
 };
 
-// ✅ دالة wrapper آمنة لحذف التقييمات
 window.deleteReview = async function(id) {
     if (!confirm('هل أنت متأكد من مسح هذا التقييم نهائياً؟')) return;
     await deleteData('client_reviews', Number(id));
@@ -835,19 +1028,38 @@ window.deleteReview = async function(id) {
     window.showToast('🗑️ تم مسح التقييم بنجاح');
 };
 
+// ============================================================
+// 10. الباقات مع دعم حساب الكمية
+// ============================================================
+document.getElementById('pkg-type')?.addEventListener('change', function() {
+    const type = this.value;
+    const qtyRow = document.getElementById('pkg-qty-row');
+    const labelRow = document.getElementById('pkg-label-row');
+    if (type === 'fixed') {
+        qtyRow.style.display = 'none';
+        labelRow.style.display = 'none';
+    } else {
+        qtyRow.style.display = 'flex';
+        labelRow.style.display = 'block';
+    }
+});
+
 window.addPricingItem = async function() {
     const title = window.getFieldVal('pkg-title');
     const price = window.getFieldVal('pkg-price');
     if (!title || !price) { window.showToast('⚠️ اكتب الاسم والسعر'); return; }
-
+    const type = document.getElementById('pkg-type')?.value || 'fixed';
     const newItem = {
         title,
         price,
         currency: window.getFieldVal('pkg-currency') || 'ج.م',
         features: window.getFieldVal('pkg-features'),
-        featured: document.getElementById('pkg-featured')?.checked || false
+        featured: document.getElementById('pkg-featured')?.checked || false,
+        type: type,
+        minQty: parseInt(window.getFieldVal('pkg-min-qty')) || 1,
+        maxQty: parseInt(window.getFieldVal('pkg-max-qty')) || 20,
+        unitLabel: window.getFieldVal('pkg-unit-label') || 'وحدة'
     };
-
     if (editingPricingId !== null) {
         await updateData(PRICING_KEY, editingPricingId, newItem);
         editingPricingId = null;
@@ -855,9 +1067,10 @@ window.addPricingItem = async function() {
         newItem.id = Date.now();
         await insertData(PRICING_KEY, newItem);
     }
-
-    ['pkg-title', 'pkg-price', 'pkg-currency', 'pkg-features'].forEach(id => window.setFieldVal(id, ''));
+    ['pkg-title', 'pkg-price', 'pkg-currency', 'pkg-features', 'pkg-min-qty', 'pkg-max-qty', 'pkg-unit-label'].forEach(id => window.setFieldVal(id, ''));
     if (document.getElementById('pkg-featured')) document.getElementById('pkg-featured').checked = false;
+    const pricingTitleEl = document.getElementById('pricing-form-title');
+    if (pricingTitleEl) pricingTitleEl.textContent = '➕ إضافة باقة جديدة';
     window.renderAdminPricing();
     window.renderPublicPricing();
     window.showToast('✅ تم حفظ الباقة');
@@ -871,11 +1084,37 @@ window.deletePricingItem = async function(id) {
     window.showToast('🗑️ تم الحذف');
 };
 
+window.startEditPricing = async function(id) {
+    const items = await fetchData(PRICING_KEY);
+    const item = items.find(i => Number(i.id) === Number(id));
+    if (!item) return;
+    editingPricingId = item.id;
+    window.setFieldVal('pkg-title',      item.title    || '');
+    window.setFieldVal('pkg-price',      item.price    || '');
+    window.setFieldVal('pkg-currency',   item.currency || 'ج.م');
+    window.setFieldVal('pkg-features',   item.features || '');
+    window.setFieldVal('pkg-min-qty',    item.minQty   || 1);
+    window.setFieldVal('pkg-max-qty',    item.maxQty   || 20);
+    window.setFieldVal('pkg-unit-label', item.unitLabel|| '');
+    if (document.getElementById('pkg-featured'))
+        document.getElementById('pkg-featured').checked = !!item.featured;
+    const typeEl = document.getElementById('pkg-type');
+    if (typeEl) {
+        typeEl.value = item.type || 'fixed';
+        typeEl.dispatchEvent(new Event('change'));
+    }
+    const titleEl = document.getElementById('pricing-form-title');
+    if (titleEl) titleEl.textContent = '✏️ تعديل الباقة';
+    // Scroll to form
+    const panel = document.getElementById('adm-panel-pricing');
+    if (panel) panel.scrollTop = 0;
+    window.showToast('✏️ عدّل البيانات واضغط حفظ');
+};
+
 // ============================================================
-// 9. Lightbox — الصورة المكبرة
+// 11. Lightbox
 // ============================================================
 window.openImage = function(src) {
-    // ✅ تأكد إن الـ src آمن ومش data url مشبوه
     if (!src || (!src.startsWith('data:image/') && !src.startsWith('https://') && !src.startsWith('http://'))) return;
     document.getElementById('expandedImg').src = src;
     document.getElementById('expandedImg').classList.remove('zoomed');
@@ -885,7 +1124,7 @@ window.closeImage = function() { document.getElementById('imageModal').style.dis
 window.toggleZoom = function(e) { e.stopPropagation(); e.target.classList.toggle('zoomed'); };
 
 // ============================================================
-// 10. ✅ العرض الآمن — كل البيانات تمر عبر escapeHTML
+// 12. Render Functions
 // ============================================================
 window.renderAllAdminPanels = function() {
     PORTFOLIO_CATS.forEach(cat => {
@@ -898,7 +1137,7 @@ window.renderAllAdminPanels = function() {
     window.renderAdminReviews();
 };
 
-// ✅ renderAdminItems — آمن من XSS
+// Admin items with Edit button
 window.renderAdminItems = async function(cat) {
     const grid = document.getElementById(`admin-items-${cat}`);
     if (!grid) return;
@@ -920,7 +1159,10 @@ window.renderAdminItems = async function(cat) {
                     : `<img src="${safeMedia}" alt="${safeTitle}">`)
                 : `<div class="no-media"><i class="fas fa-image"></i></div>`}
             <div class="admin-item-info"><h4>${safeTitle}</h4></div>
-            <div class="item-actions">
+            <div class="item-actions" style="display:flex; gap:6px; flex-wrap:wrap;">
+                <button class="btn-edit-item" onclick="startEdit('${safeCat}',${safeId})">
+                    <i class="fas fa-edit"></i> تعديل
+                </button>
                 <button class="btn-del-item" onclick="deleteItem('${safeCat}',${safeId})">
                     <i class="fas fa-trash"></i> حذف
                 </button>
@@ -929,7 +1171,7 @@ window.renderAdminItems = async function(cat) {
     }).join('');
 };
 
-// دالة مساعدة لبناء كارت المشروع
+// Build portfolio card (shared between public panel and modal)
 window.createPortfolioCard = function(item, cat) {
     const card = document.createElement('div');
     card.className = 'port-card dynamic-item';
@@ -939,7 +1181,7 @@ window.createPortfolioCard = function(item, cat) {
     const safeTitle = window.escapeHTML(item.title || '');
     const safeDesc  = window.escapeHTML(item.desc  || '');
 
-    let thumbContent = `<span class="no-img"><i class="fas fa-image"></i></span>`;
+    let thumbContent = '';
     let hasClickableThumb = false;
     const isActualVid = (item.isVideo === true || item.isVideo === 'true');
 
@@ -954,6 +1196,11 @@ window.createPortfolioCard = function(item, cat) {
                 thumbContent = `<img src="${safeMedia}" alt="${safeTitle}" onclick="openImage('${safeMedia}')" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in;" title="اضغط للتكبير">`;
             }
         }
+    } else if (item.hardcoded && item.icon) {
+        // Hardcoded projects with icon
+        thumbContent = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f8fafc,#e2e8f0);">
+            <i class="${window.escapeHTML(item.icon)}" style="font-size:4rem;color:${window.escapeHTML(item.iconColor || '#64748b')};"></i>
+        </div>`;
     } else if (safeLink) {
         const ytId = safeLink.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/)?.[1];
         if (ytId) {
@@ -962,7 +1209,11 @@ window.createPortfolioCard = function(item, cat) {
             hasClickableThumb = true;
         } else if (cat === 'videos') {
             thumbContent = `<span class="no-img"><i class="fas fa-video"></i></span>`;
+        } else {
+            thumbContent = `<span class="no-img"><i class="fas fa-image"></i></span>`;
         }
+    } else {
+        thumbContent = `<span class="no-img"><i class="fas fa-image"></i></span>`;
     }
 
     const tagsHtml = (item.tags || '').split(',')
@@ -973,10 +1224,15 @@ window.createPortfolioCard = function(item, cat) {
         ? `<a href="${safeLink}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-size:.85rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:10px;"><i class="fas fa-external-link-alt"></i> عرض المشروع</a>`
         : '';
 
+    const hardcodedBadge = item.hardcoded ? `<span class="hardcoded-badge"><i class="fas fa-code"></i> مدمج</span>` : '';
+
     card.innerHTML = `
         <div class="port-thumb" style="position:relative;">${thumbContent}</div>
         <div class="port-info">
-            <h4>${safeTitle}</h4>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <h4 style="margin:0;">${safeTitle}</h4>
+                ${hardcodedBadge}
+            </div>
             <p style="font-size:0.85rem; color:var(--muted); line-height:1.5;">${safeDesc}</p>
             <div class="port-tags">${tagsHtml}</div>
             ${linkHtml}
@@ -984,64 +1240,88 @@ window.createPortfolioCard = function(item, cat) {
     return card;
 };
 
-// عرض الأعمال في الصفحة (أول 6 فقط)
+// Public panel render (first 6)
 window.renderPublicPanel = async function(cat) {
     const grid = document.getElementById(`grid-${cat}`);
     if (!grid) return;
 
-    const dynamic = await fetchData('portfolio_' + cat);
-    grid.querySelectorAll('.dynamic-item').forEach(el => el.remove());
+    // For AI: combine hardcoded + dynamic
+    let allItems = [];
+    if (cat === 'ai') {
+        const dynamic = await fetchData('portfolio_ai');
+        allItems = [...HARDCODED_AI_PROJECTS, ...dynamic];
+    } else {
+        allItems = await fetchData('portfolio_' + cat);
+    }
 
+    grid.querySelectorAll('.dynamic-item').forEach(el => el.remove());
     const empty = document.getElementById(`empty-${cat}`);
     const staticCount = grid.querySelectorAll('.port-card:not(.dynamic-item)').length;
-    if (empty) empty.style.display = (staticCount + dynamic.length === 0) ? 'block' : 'none';
+    if (empty) empty.style.display = (staticCount + allItems.length === 0) ? 'block' : 'none';
 
-    const itemsToDisplay = dynamic.length > 6 ? dynamic.slice(0, 6) : dynamic;
+    const itemsToDisplay = allItems.length > 6 ? allItems.slice(0, 6) : allItems;
     itemsToDisplay.forEach(item => grid.appendChild(window.createPortfolioCard(item, cat)));
 
-    if (dynamic.length > 6) {
+    if (allItems.length > 6) {
         const btnDiv = document.createElement('div');
         btnDiv.className = 'dynamic-item';
         btnDiv.style.cssText = 'grid-column: 1 / -1; text-align: center; margin-top: 1.5rem;';
         btnDiv.innerHTML = `<button class="btn-outline" onclick="openPortfolioModal('${window.escapeHTML(cat)}')" style="padding: 10px 25px; font-size: 1rem; border-radius: 8px;">
-            <i class="fas fa-layer-group"></i> عرض جميع الأعمال (${dynamic.length})
+            <i class="fas fa-layer-group"></i> عرض جميع الأعمال (${allItems.length})
         </button>`;
         grid.appendChild(btnDiv);
     }
 };
 
-// نافذة عرض كل الأعمال
+// Portfolio modal with sticky close
 window.openPortfolioModal = async function(cat) {
     if (!PORTFOLIO_CATS.includes(cat)) return;
     document.getElementById('portfolioModal').style.display = 'flex';
-
     const catNames = { ai: 'الذكاء الاصطناعي', design: 'التصميم', websites: 'المواقع', automation: 'الأتمتة', videos: 'فيديوهات AI' };
     document.getElementById('portfolio-modal-title').innerHTML = `<i class="fas fa-folder-open"></i> جميع أعمال ${catNames[cat] || cat}`;
-
     const grid = document.getElementById('portfolio-modal-grid');
     grid.innerHTML = '<p style="text-align:center; grid-column:1/-1; color: var(--muted);">جاري التحميل...</p>';
-
-    const dynamic = await fetchData('portfolio_' + cat);
+    let allItems = [];
+    if (cat === 'ai') {
+        const dynamic = await fetchData('portfolio_ai');
+        allItems = [...HARDCODED_AI_PROJECTS, ...dynamic];
+    } else {
+        allItems = await fetchData('portfolio_' + cat);
+    }
     grid.innerHTML = '';
-    dynamic.forEach(item => grid.appendChild(window.createPortfolioCard(item, cat)));
+    allItems.forEach(item => grid.appendChild(window.createPortfolioCard(item, cat)));
 };
 
 window.closePortfolioModal = function() {
     document.getElementById('portfolioModal').style.display = 'none';
 };
 
-// ✅ renderAdminPricing — آمن من XSS
+// Admin pricing render - with Edit button
 window.renderAdminPricing = async function() {
     const list = document.getElementById('admin-pricing-list');
     if (!list) return;
     const items = await fetchData(PRICING_KEY);
+    if (!items.length) {
+        list.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:2rem">لا توجد باقات بعد</p>';
+        return;
+    }
     list.innerHTML = items.map(item => {
-        const safeTitle = window.escapeHTML(item.title);
-        const safeId    = Number(item.id);
-        return `<div class="pricing-admin-item">
-            <div class="pai-info"><h4>${safeTitle}</h4></div>
-            <div class="pai-actions">
-                <button class="btn-sm-del" onclick="deletePricingItem(${safeId})">
+        const safeTitle    = window.escapeHTML(item.title);
+        const safePrice    = window.escapeHTML(String(item.price));
+        const safeCurrency = window.escapeHTML(item.currency || 'ج.م');
+        const safeId       = Number(item.id);
+        const type         = item.type || 'fixed';
+        const typeLabel    = type === 'fixed' ? 'ثابت' : 'بالكمية';
+        return `<div class="pricing-admin-item" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px;">
+            <div>
+                <h4 style="margin:0 0 4px;">${safeTitle}</h4>
+                <span style="font-size:0.82rem;color:var(--muted);">${safePrice} ${safeCurrency} &middot; ${typeLabel}</span>
+            </div>
+            <div style="display:flex;gap:8px;">
+                <button class="btn-edit-item" onclick="startEditPricing(${safeId})">
+                    <i class="fas fa-edit"></i> تعديل
+                </button>
+                <button style="background:#fee2e2;color:#dc2626;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;" onclick="deletePricingItem(${safeId})">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -1049,7 +1329,7 @@ window.renderAdminPricing = async function() {
     }).join('');
 };
 
-// ✅ renderPublicPricing — آمن من XSS
+// Public pricing with quantity calculator - always visible when type != fixed
 window.renderPublicPricing = async function() {
     const grid = document.getElementById('public-pricing-grid');
     if (!grid) return;
@@ -1062,17 +1342,42 @@ window.renderPublicPricing = async function() {
         const safeTitle    = window.escapeHTML(item.title);
         const safePrice    = window.escapeHTML(String(item.price));
         const safeCurrency = window.escapeHTML(item.currency || 'ج.م');
+        const safeId       = Number(item.id);
         const features     = (item.features || '').split('\n').filter(Boolean);
         const featuresHtml = features.map(f => `<li><i class="fas fa-check-circle"></i>${window.escapeHTML(f)}</li>`).join('');
-        // ✅ نمرر البيانات عبر data attributes بدل تضمينها مباشرة في onclick
+        const type         = item.type || 'fixed';
+        const minQty       = Number(item.minQty) || 1;
+        const maxQty       = Number(item.maxQty) || 20;
+        const unitLabel    = window.escapeHTML(item.unitLabel || 'وحدة');
+        const basePrice    = Number(item.price) || 0;
+
+        // Qty selector — shown for all non-fixed packages
+        const qtyHtml = (type !== 'fixed') ? `
+            <div style="border-top:1px solid #e2e8f0;margin-top:15px;padding-top:15px;">
+                <p class="qty-label" style="margin-bottom:8px;font-size:0.9rem;color:var(--muted);">كم ${unitLabel} تحتاج؟</p>
+                <div class="qty-selector">
+                    <button class="qty-btn" onclick="changeQty(${safeId},-1,${minQty},${maxQty},${basePrice},'${safeCurrency}')">−</button>
+                    <span class="qty-display" id="qty-${safeId}">${minQty}</span>
+                    <button class="qty-btn" onclick="changeQty(${safeId},+1,${minQty},${maxQty},${basePrice},'${safeCurrency}')">+</button>
+                </div>
+                <div class="calculated-price">
+                    السعر الإجمالي
+                    <strong id="total-${safeId}">${minQty * basePrice} ${safeCurrency}</strong>
+                </div>
+            </div>` : '';
+
         return `<div class="payment-card ${item.featured ? 'featured' : ''}">
             ${item.featured ? '<div class="featured-badge">الأكثر طلباً ⭐</div>' : ''}
-            <div class="price">${safePrice} <span>${safeCurrency}</span></div>
+            <div class="price">${safePrice} <span>${safeCurrency}</span>${type !== 'fixed' ? `<div style="font-size:0.75rem;color:var(--muted);margin-top:3px;font-weight:400;">لكل ${unitLabel}</div>` : ''}</div>
             <h4>${safeTitle}</h4>
             <ul>${featuresHtml}</ul>
+            ${qtyHtml}
             <button class="pay-btn"
                 data-title="${safeTitle}"
-                data-price="${safePrice} ${safeCurrency}"
+                data-price="${safePrice}"
+                data-currency="${safeCurrency}"
+                data-type="${type}"
+                data-id="${safeId}"
                 onclick="handlePricingPayment(this)">
                 <i class="fas fa-bolt"></i> ابدأ الآن
             </button>
@@ -1080,14 +1385,32 @@ window.renderPublicPricing = async function() {
     }).join('');
 };
 
-// ✅ handler آمن لزرار الباقات
-window.handlePricingPayment = function(btn) {
-    const title = btn.getAttribute('data-title');
-    const price = btn.getAttribute('data-price');
-    window.openPayment(title, price);
+window.changeQty = function(id, delta, min, max, basePrice, currency) {
+    const qtyEl   = document.getElementById('qty-'   + id);
+    const totalEl = document.getElementById('total-' + id);
+    if (!qtyEl || !totalEl) return;
+    let current = parseInt(qtyEl.textContent) || min;
+    current = Math.min(max, Math.max(min, current + delta));
+    qtyEl.textContent   = current;
+    totalEl.textContent = (current * basePrice) + ' ' + currency;
 };
 
-// ✅ renderAdminReceipts — آمن من XSS
+window.handlePricingPayment = function(btn) {
+    const title    = btn.getAttribute('data-title');
+    const price    = btn.getAttribute('data-price');
+    const currency = btn.getAttribute('data-currency') || 'ج.م';
+    const type     = btn.getAttribute('data-type');
+    const id       = btn.getAttribute('data-id');
+
+    let finalPrice = price + ' ' + currency;
+    if (type !== 'fixed') {
+        const totalEl = document.getElementById('total-' + id);
+        if (totalEl) finalPrice = totalEl.textContent;
+    }
+    window.openPayment(title, finalPrice);
+};
+
+// Admin receipts
 window.renderAdminReceipts = async function() {
     const list = document.getElementById('admin-receipts-list');
     if (!list) return;
@@ -1102,7 +1425,6 @@ window.renderAdminReceipts = async function() {
         const safeAmount  = window.escapeHTML(String(r.amount));
         const safeMethod  = r.payment_method === 'instapay' ? 'انستا باي' : 'أورانج كاش';
         const safeId      = Number(r.id);
-        // ✅ الصورة تظهر بس لو data:image أو HTTPS
         const safeImg = r.receipt_image && (r.receipt_image.startsWith('data:image/') || r.receipt_image.startsWith('https://'))
             ? window.escapeHTML(r.receipt_image) : '';
         return `<div class="admin-item" style="flex-direction:column; align-items:flex-start; height:auto; padding:15px; background:#fff; border:1px solid #e2e8f0; border-radius:12px;">
@@ -1120,7 +1442,7 @@ window.renderAdminReceipts = async function() {
     }).join('');
 };
 
-// ✅ renderAdminReviews — آمن من XSS
+// Admin reviews
 window.renderAdminReviews = async function() {
     const list = document.getElementById('admin-reviews-list');
     if (!list) return;
@@ -1153,9 +1475,10 @@ window.renderAdminReviews = async function() {
 };
 
 // ============================================================
-// 11. نظام التقييمات
+// 13. نظام التقييمات مع تعديل التعليق الخاص
 // ============================================================
 window.openReviewModal = function() {
+    currentReviewEditId = null;
     document.getElementById('reviewModal').style.display = 'flex';
     window.setRating(0);
     document.getElementById('review-name').value = '';
@@ -1164,6 +1487,9 @@ window.openReviewModal = function() {
 
 window.closeReviewModal = function() {
     document.getElementById('reviewModal').style.display = 'none';
+    currentReviewEditId = null;
+    const modalTitle = document.querySelector('#reviewModal h3');
+    if (modalTitle) modalTitle.innerHTML = '<i class="fas fa-star" style="color:#fbbf24"></i> أضف تقييمك';
 };
 
 window.setRating = function(val) {
@@ -1182,32 +1508,79 @@ window.openAllReviewsModal = async function() {
     list.innerHTML = reviews.map(r => window.createReviewCardHtml(r)).join('');
 };
 
-window.closeAllReviewsModal = function() {
-    document.getElementById('allReviewsModal').style.display = 'none';
-};
+window.closeAllReviewsModal = function() { document.getElementById('allReviewsModal').style.display = 'none'; };
 
 window.submitReview = async function() {
     const name = document.getElementById('review-name').value.trim() || 'عميل';
     const text = document.getElementById('review-text').value.trim();
-    if (!text || currentRating === 0) {
-        window.showToast('⚠️ يرجى كتابة الرأي واختيار النجوم');
+    if (!text || currentRating === 0) { window.showToast('⚠️ يرجى كتابة الرأي واختيار النجوم'); return; }
+
+    // تعديل تعليق موجود
+    if (currentReviewEditId !== null) {
+        const stored = JSON.parse(localStorage.getItem('my_reviews') || '[]');
+        const myReview = stored.find(id => id === currentReviewEditId);
+        if (!myReview) { window.showToast('❌ لا يمكنك تعديل هذا التعليق'); return; }
+        await updateData('client_reviews', currentReviewEditId, { client_name: name, review_text: text, rating: currentRating });
+        window.showToast('✅ تم تعديل تقييمك بنجاح');
+        currentReviewEditId = null;
+        window.closeReviewModal();
+        window.renderPublicReviews();
         return;
     }
-    const newReview = {
-        id: Date.now(),
-        client_name: name,
-        review_text: text,
-        rating: currentRating,
-        date: new Date().toLocaleDateString('ar-EG')
-    };
+
+    const newId = Date.now();
+    const newReview = { id: newId, client_name: name, review_text: text, rating: currentRating, date: new Date().toLocaleDateString('ar-EG') };
     window.showToast('⏳ جاري الحفظ...');
     await insertData('client_reviews', newReview);
+
+    // حفظ ID التعليق في localStorage للسماح بتعديله/حذفه لاحقاً
+    try {
+        const stored = JSON.parse(localStorage.getItem('my_reviews') || '[]');
+        stored.push(newId);
+        localStorage.setItem('my_reviews', JSON.stringify(stored));
+    } catch(e) {}
+
     window.closeReviewModal();
     window.showToast('✅ تم إرسال تقييمك بنجاح، شكراً لك!');
     window.renderPublicReviews();
 };
 
-// ✅ createReviewCardHtml — آمن من XSS
+// هل هذا تقييم المستخدم الحالي؟
+window.isMyReview = function(id) {
+    try {
+        const stored = JSON.parse(localStorage.getItem('my_reviews') || '[]');
+        return stored.includes(Number(id)) || stored.includes(String(id));
+    } catch(e) { return false; }
+};
+
+window.openEditMyReview = async function(id) {
+    if (!window.isMyReview(id)) { window.showToast('❌ لا يمكنك تعديل تعليقات الآخرين'); return; }
+    const reviews = await fetchData('client_reviews');
+    const r = reviews.find(rv => String(rv.id) === String(id));
+    if (!r) return;
+    currentReviewEditId = r.id;
+    document.getElementById('reviewModal').style.display = 'flex';
+    document.getElementById('review-name').value = r.client_name || '';
+    document.getElementById('review-text').value = r.review_text || '';
+    window.setRating(r.rating || 0);
+    // Change modal title to indicate edit mode
+    const modalTitle = document.querySelector('#reviewModal h3');
+    if (modalTitle) modalTitle.innerHTML = '<i class="fas fa-edit" style="color:#2563eb"></i> تعديل تقييمك';
+};
+
+window.deleteMyReview = async function(id) {
+    if (!window.isMyReview(id)) { window.showToast('❌ لا يمكنك حذف تعليقات الآخرين'); return; }
+    if (!confirm('هل تريد حذف تعليقك؟')) return;
+    await deleteData('client_reviews', Number(id));
+    try {
+        const stored = JSON.parse(localStorage.getItem('my_reviews') || '[]');
+        localStorage.setItem('my_reviews', JSON.stringify(stored.filter(i => String(i) !== String(id))));
+    } catch(e) {}
+    window.renderPublicReviews();
+    window.showToast('🗑️ تم حذف تعليقك');
+};
+
+// Review card HTML builder - owner can edit/delete their own review
 window.createReviewCardHtml = function(r) {
     let starsHtml = '';
     const rating = Math.min(5, Math.max(0, Number(r.rating)));
@@ -1217,19 +1590,34 @@ window.createReviewCardHtml = function(r) {
     const safeName = window.escapeHTML(r.client_name);
     const safeText = window.escapeHTML(r.review_text);
     const safeDate = window.escapeHTML(r.date || '');
+    const safeId   = Number(r.id);
     const initial  = safeName ? safeName.charAt(0) : '@';
+
+    // زرار التعديل والحذف — يظهر فقط لصاحب التعليق
+    const isMine = window.isMyReview(r.id);
+    const ownerActions = isMine ? `
+        <div class="review-edit-actions" style="display:flex;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid #f1f5f9;">
+            <button onclick="openEditMyReview(${safeId})" style="background:#dbeafe;color:#2563eb;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;gap:5px;">
+                <i class="fas fa-edit"></i> تعديل تعليقك
+            </button>
+            <button onclick="deleteMyReview(${safeId})" style="background:#fee2e2;color:#dc2626;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;gap:5px;">
+                <i class="fas fa-trash"></i> حذف
+            </button>
+        </div>` : '';
+
     return `<div class="review-card">
         <div class="review-stars">${starsHtml}</div>
         <p class="review-text">"${safeText}"</p>
         <div class="review-author">
-            <div style="width:40px; height:40px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2rem;">
+            <div style="width:40px;height:40px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;">
                 ${initial}
             </div>
             <div>
                 <div style="font-size:1rem;">${safeName}</div>
-                <div style="font-size:0.8rem; color:var(--muted); margin-top:2px;">${safeDate}</div>
+                <div style="font-size:0.8rem;color:var(--muted);margin-top:2px;">${safeDate}</div>
             </div>
         </div>
+        ${ownerActions}
     </div>`;
 };
 
@@ -1254,7 +1642,7 @@ window.renderPublicReviews = async function() {
 };
 
 // ============================================================
-// 12. الدفع
+// 14. الدفع
 // ============================================================
 window.openPayment = function(title, price, name = '') {
     currentPayTitle = title;
@@ -1315,23 +1703,13 @@ window.submitReceipt = async function() {
     const receiptInput = document.getElementById('receipt-file');
     const file = receiptInput?.files[0];
     if (!file) { window.showToast('⚠️ يرجى إرفاق صورة الإيصال أولاً'); return; }
-    // ✅ تحقق من نوع الملف
     if (!file.type.startsWith('image/')) { window.showToast('⚠️ يرجى رفع صورة فقط'); return; }
-    // ✅ حد أقصى 5MB
     if (file.size > 5 * 1024 * 1024) { window.showToast('⚠️ الصورة كبيرة جداً (الحد الأقصى 5MB)'); return; }
-
     window.showToast('⏳ جاري رفع البيانات..');
     const reader = new FileReader();
     reader.onload = async function(e) {
         const imageData = e.target.result;
-        const receiptData = {
-            id: Date.now(),
-            client_name:    currentPayName || 'زائر',
-            service_title:  currentPayTitle,
-            amount:         currentPayPrice,
-            payment_method: selectedPayMethod,
-            receipt_image:  imageData
-        };
+        const receiptData = { id: Date.now(), client_name: currentPayName || 'زائر', service_title: currentPayTitle, amount: currentPayPrice, payment_method: selectedPayMethod, receipt_image: imageData };
         await insertData('payment_receipts', receiptData);
         let message = `*تأكيد دفع (CodeError)* 💳\n\n`;
         message += `👤 *الاسم:* ${receiptData.client_name}\n`;
@@ -1355,16 +1733,10 @@ window.sendWhatsApp = function() {
 
 window.copyNumber = function(num) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num)
-            .then(() => window.showToast('✅ تم نسخ الرقم: ' + num))
-            .catch(() => alert('الرقم هو: ' + num));
+        navigator.clipboard.writeText(num).then(() => window.showToast('✅ تم نسخ الرقم: ' + num)).catch(() => alert('الرقم هو: ' + num));
     } else {
         const ta = document.createElement('textarea');
-        ta.value = num;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+        ta.value = num; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
         window.showToast('✅ تم نسخ الرقم بنجاح');
     }
 };
@@ -1375,13 +1747,11 @@ window.showToast = function(msg) {
 };
 
 // ============================================================
-// 13. الإعداد عند تحميل الصفحة
+// 15. تهيئة الصفحة
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // ✅ فحص جلسة Supabase الحالية (بدل localStorage)
     checkExistingSession();
 
-    // كليك سري لفتح لوحة التحكم
     const logo = document.querySelector('.logo');
     if (logo) {
         logo.addEventListener('click', async () => {
@@ -1398,7 +1768,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // القائمة المتجاوبة
     const menuToggle = document.querySelector('.menu-toggle');
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
@@ -1411,7 +1780,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // إغلاق النوافذ بالضغط خارجها
     document.getElementById('payModal')?.addEventListener('click', e => {
         if (e.target === document.getElementById('payModal')) window.closePayModal();
     });
@@ -1419,7 +1787,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === document.getElementById('adminOverlay')) window.closeAdminLogin();
     });
 
-    // تحميل البيانات
     PORTFOLIO_CATS.forEach(cat => window.renderPublicPanel(cat));
     window.renderPublicPricing();
     window.renderPublicReviews();
