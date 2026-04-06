@@ -161,13 +161,13 @@
         </div>
         <div class="contact-grid">
             <div class="social-cards">
-                <a href="https://wa.me/qr/MKM27UZRYFGFG1" target="_blank" class="social-card">
+                <a href="https://wa.me/201278995867?text=" target="_blank" class="social-card">
                     <i class="fab fa-whatsapp" style="color:#25d366"></i>
                     <div class="sc-info"><h4>واتساب</h4><p>تواصل مباشر وسريع</p></div>
                 </a>
                 <a href="https://github.com/CodeError2" target="_blank" class="social-card">
                     <i class="fab fa-github" style="color:#1e293b"></i>
-                    <div class="sc-info"><h4>GitHub</h4><p>شوف الكود والمشاريع</p></div>
+                    <div class="sc-info"><h4>GitHub</h4><p> الكود والمشاريع</p></div>
                 </a>
             </div>
             <div class="contact-form">
@@ -1716,7 +1716,7 @@ window.submitReceipt = async function() {
         message += `📦 *الخدمة:* ${receiptData.service_title}\n`;
         message += `💰 *المبلغ:* ${receiptData.amount}\n`;
         message += `🏧 *الوسيلة:* ${receiptData.payment_method === 'instapay' ? 'انستا باي' : 'أورانج كاش'}\n\n`;
-        message += `✅ تم رفع الإيصال في لوحة تحكم الموقع.`;
+        message += `✅ تم رفع الإيصال.`;
         window.open(`https://wa.me/201278995867?text=${encodeURIComponent(message)}`, '_blank');
         window.closePayModal();
         window.showToast('✅ تم الرفع وفتح واتساب');
