@@ -1,0 +1,19 @@
+name: Keep Supabase Awake
+
+on:
+  schedule:
+    # تشتغل الساعة 12:00 ظهراً بتوقيت جرينتش كل 5 أيام
+    - cron: '0 12 */5 * *'
+  # تتيح لك تشغيل الأكشن يدوي للتجربة
+  workflow_dispatch:
+
+jobs:
+  ping_supabase:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send keep-alive request to Supabase
+        run: |
+          curl -i -X GET "https://aoieutqzryexuruamhco.supabase.co/rest/v1/profiles?limit=1" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
